@@ -1,0 +1,19 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 29, 2016, 10:38:11 PM
+    Author     : PoolLaptop
+*/
+
+@font-face {
+    font-family: 'Superspace';
+    src: url('webfont.eot'); /* IE9 Compat Modes */
+    /*    src: url('webfont.eot?#iefix') format('embedded-opentype'),  IE6-IE8 */
+    /*        url('webfont.woff2') format('woff2'),  Super Modern Browsers */
+    /*        url('webfont.woff') format('woff'),  Pretty Modern Browsers */
+    src: url('../fonts/Superspace-Regular-ver-1.00.ttf')  format('truetype'); /* Safari, Android, iOS */
+    /*        url('webfont.svg#svgFontName') format('svg');  Legacy iOS */
+}
