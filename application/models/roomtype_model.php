@@ -16,9 +16,13 @@ class RoomType_model extends CI_Model {
         $query = $this->db->get('m_room_type');
         return $query->result_array();
     }
-    public function getDataSingle() {
-        $query = $this->db->get('m_room_type');
+
+    public function getDataSingle($id) {
+        $query = $this->db->get('m_room_type', $id);
         return $query->result();
     }
+    
+    
+    
 
 }
