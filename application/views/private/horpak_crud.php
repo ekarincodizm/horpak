@@ -82,11 +82,11 @@
         </div>
         <div class="input-field col s6">
             <button type="submit" class="waves-effect waves-light btn btn-large" id="btnSave">บันทึก</button>
-            <button type="reset" class="waves-effect lime orange lighten-3 btn">ล้างค่า</a>
+            <button type="reset" class="waves-effect lime orange lighten-3 btn">ล้างค่า</button>
         </div>
     </div>   
 </form>
-<table class="bordered">
+<table class="bordered table">
     <thead>
         <tr>
             <th>code_id</th>
@@ -96,6 +96,8 @@
             <th>email</th>
             <th>contact</th>
             <th>join_date</th>
+            <th>#</th>
+            <th>#</th>
         </tr>
     </thead>
     <tbody>
