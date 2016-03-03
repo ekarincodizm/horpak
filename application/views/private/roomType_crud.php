@@ -45,6 +45,12 @@
                 <td><?= $data['type_name'] ?></td>
                 <td><?= $data['type_desc'] ?></td>
                 <td><?= $data['std_price'] ?></td>
+                <td>
+                    <button class="btn confirm" 
+                            data-id="<?= $data['code_id'] ?>"
+                            data-url="<?= site_url('backend/horpak') ?>"
+                            >ลบ [<?= $data['code_id'] ?>]</button>
+                </td>
             </tr>
         <?php } ?>
     </tbody>

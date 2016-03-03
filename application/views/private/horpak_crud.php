@@ -81,7 +81,7 @@
             กำลังทำการคัดลอกข้อมูลอยู่
         </div>
         <div class="input-field col s6">
-            <button type="submit" class="waves-effect waves-light btn btn-large" id="btnSave">บันทึก</button>
+            <button type="submit" class="waves-effect waves-light btn" id="btnSave">บันทึก</button>
             <button type="reset" class="waves-effect lime orange lighten-3 btn">ล้างค่า</button>
         </div>
     </div>   

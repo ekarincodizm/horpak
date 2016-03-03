@@ -30,7 +30,8 @@ class Horpak_model extends CI_Model {
     }
 
     public function getDataSingle($id) {
-        $query = $this->db->get('p_horpak', $id);
+        $this->db->from('p_horpak')->where('code_id', $id);
+        $query = $this->db->get();
         return $query->row();
     }
 

@@ -6,6 +6,7 @@
 $(document).ready(function () {
     customDatatable();
     defaultValidate();
+    handleDelete();
 });
 
 $.extend(true, $.fn.dataTable.defaults, {
@@ -39,14 +40,13 @@ function defaultValidate() {
         unhighlight: function (element) {
             $(element).parent('.input-field').children('span').css({'color': 'red'});
         },
-        errorElement: 'span',
-        errorClass: 'validate',
+        errorElement: 'input',
+        errorClass: 'error',
         errorPlacement: function (error, element) {
-            if (element.parent('.input-group').length) {
-                error.insertAfter(element.parent());
-            } else {
-                error.insertAfter(element);
-            }
+            $(element).parent().css({'border': '1px solid red'});
+        },
+        success: function (error, element) {
+            $(element).parent().css({'border': ''});
         },
     });
     $('form.validate').submit(function (e) {
@@ -57,4 +57,35 @@ function defaultValidate() {
             form.submit();
         }
     });
+}
+
+function handleDelete() {
+    /*
+     * referrence http://craftpip.github.io/jquery-confirm/
+     */
+    $('button.confirm').each(function (index, element) {
+        var message = ($(element).attr("data-message") != undefined ? $(element).attr("data-message") : "ยืนยนัการลบ");
+        $(element).confirm({
+            title: 'Confirm!',
+            content: message,
+            confirmButton: 'Okay',
+            cancelButton: 'Close',
+            confirmButtonClass: 'btn light-green accent-4',
+            cancelButtonClass: 'btn red darken-3',
+            confirm: function () {
+                var id = $(element).attr("data-id");
+                var url = $(element).attr("data-url");
+                $.post(url, {id: id}, function (resp) {
+                    console.log(resp);
+                    window.location.reload(true);
+                }, 'html');
+            },
+            cancel: function () {
+                
+            },
+            icon: 'fa fa-warning',
+            columnClass: 'col l4 offset-l4'
+        });
+    });
+
 }
