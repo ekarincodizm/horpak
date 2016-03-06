@@ -32,6 +32,7 @@ function customDatatable() {
     $('.table').DataTable();
 }
 
+
 function defaultValidate() {
     $.validator.setDefaults({
         highlight: function (element) {
@@ -63,9 +64,11 @@ function handleDelete() {
     /*
      * referrence http://craftpip.github.io/jquery-confirm/
      */
-    $('button.confirm').each(function (index, element) {
+    var element = {};
+    $(window.document).on('click', 'button.confirm,a.confirm', function () {
+        element = this;
         var message = ($(element).attr("data-message") != undefined ? $(element).attr("data-message") : "ยืนยนัการลบ");
-        $(element).confirm({
+        $.confirm({
             title: 'Confirm!',
             content: message,
             confirmButton: 'Okay',
@@ -77,15 +80,17 @@ function handleDelete() {
                 var url = $(element).attr("data-url");
                 $.post(url, {id: id}, function (resp) {
                     console.log(resp);
-                    window.location.reload(true);
-                }, 'html');
+                    if (resp.status) {
+                        window.location.reload(true);
+                    }
+                }, 'json');
             },
             cancel: function () {
-                
+
             },
             icon: 'fa fa-warning',
             columnClass: 'col l4 offset-l4'
         });
-    });
+    })
 
 }

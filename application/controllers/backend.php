@@ -44,7 +44,7 @@ class Backend extends CI_Controller {
         $this->load->model('horpak_model');
         if (!empty($_POST)) {
             $this->horpak_model->setData($_POST);
-            if (empty($_POST['code'])) {
+            if (empty($_POST['code_id'])) {
                 $exec = $this->horpak_model->insertData();
             } else {
                 $exec = $this->horpak_model->updateData();
@@ -54,14 +54,6 @@ class Backend extends CI_Controller {
             }
         }
     }
-
-    public function deleteHorpak($id) {
-        $this->load->model('horpak_model');
-        if ($this->horpak_model->deleteData($id)) {
-            redirect('/backend/horpak', 'refresh');
-        }
-    }
-
     /*
      * Horpak Crud
      */

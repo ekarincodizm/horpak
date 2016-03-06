@@ -49,7 +49,7 @@
                     <button class="btn confirm" 
                             data-id="<?= $data['code_id'] ?>"
                             data-url="<?= site_url('backend/horpak') ?>"
-                            >ลบ [<?= $data['code_id'] ?>]</button>
+                            >ลบ</button>
                 </td>
             </tr>
         <?php } ?>

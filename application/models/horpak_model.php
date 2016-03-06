@@ -41,7 +41,7 @@ class Horpak_model extends CI_Model {
     }
 
     public function setData($data) {
-        $this->code_id = $data['code'];
+        $this->code_id = $data['code_id'];
         $this->array_horpak = array(
             //'code_id' => $data['code'],
             'name_th' => $data['name_th'],
