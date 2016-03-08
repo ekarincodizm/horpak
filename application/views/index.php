@@ -1,14 +1,4 @@
-<section class="section">
-    <div class=" col l12 blue lighten-3">
-        sdsdsd
-    </div>
-</section>
-<div class="divider"></div>
-<section class="section">
-    <div class=" col l12 blue lighten-2">
-        sdsdsd
-    </div>
-</section>
+
 <section class="section">
     <div class="row">
         <div class="col s4">

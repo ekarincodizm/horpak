@@ -1,4 +1,16 @@
-<form name="formHorpak" id="formHorpak" class="validate" method="POST" action="<?= site_url('backend/saveHorpak') ?>">
+<div class="ui modal">
+    <div class="header">Header</div>
+    <div class="content">
+        <p></p>
+    </div>
+    <div class="actions">
+        <div class="ui approve button">Approve</div>
+        <div class="ui button">Neutral</div>
+        <div class="ui cancel button">Cancel</div>
+    </div>
+</div>
+
+<!--<form name="formHorpak" id="formHorpak" class="validate" method="POST" action="<?= site_url('backend/saveHorpak') ?>">
     <div id="modalHorpak" class="modal modal-fixed-footer">
         <div class="modal-content">
             <h4>Modal Header</h4>
@@ -76,4 +88,4 @@
         </div>
     </div>
 
-</form>
+</form>-->
