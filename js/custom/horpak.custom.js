@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
+ * Global Varliable
+ */
 $(document).ready(function () {
     //customDatatable();
     defaultValidate();
-    handleDelete();
 });
 
 //$.extend(true, $.fn.dataTable.defaults, {
@@ -59,38 +61,25 @@ function defaultValidate() {
         }
     });
 }
-
-function handleDelete() {
-    /*
-     * referrence http://craftpip.github.io/jquery-confirm/
-     */
-    var element = {};
-    $(window.document).on('click', 'button.confirm,a.confirm', function () {
-        element = this;
-        var message = ($(element).attr("data-message") != undefined ? $(element).attr("data-message") : "ยืนยนัการลบ");
-        $.confirm({
-            title: 'Confirm!',
-            content: message,
-            confirmButton: 'Okay',
-            cancelButton: 'Close',
-            confirmButtonClass: 'btn light-green accent-4',
-            cancelButtonClass: 'btn red darken-3',
-            confirm: function () {
-                var id = $(element).attr("data-id");
-                var url = $(element).attr("data-url");
-                $.post(url, {id: id}, function (resp) {
-                    console.log(resp);
-                    if (resp.status) {
-                        window.location.reload(true);
-                    }
-                }, 'json');
-            },
-            cancel: function () {
-
-            },
-            icon: 'fa fa-warning',
-            columnClass: 'col l4 offset-l4'
-        });
-    })
-
+function deleteConfig(restUrlDelete) {
+    $.confirm({
+        icon: 'fa fa-warning',
+        title: 'ท่านกำลังจะลบข้อมูล',
+        content: 'ยืนยันการลบ!',
+        confirmButton: 'ใช่ ฉันจะลบมัน',
+        cancelButton: 'ไม่ใช่ ฉันกดผิด',
+        confirmButtonClass: 'ui button green',
+        cancelButtonClass: 'ui button red',
+        columnClass: 'ui grid',
+        closeIcon: true,
+        closeIconClass: 'fa fa-close', // or 'glyphicon glyphicon-remove'
+        confirm: function () {
+            window.location.href = restUrlDelete;// "<?= site_url('Backend/DeleteConfig') ?>" + "/" + codeId;
+        },
+        cancel: function () {
+            //$.alert('Canceled!')
+        }
+    });
+    $('.jconfirm-box').parent().prepend($('<div class="six wide column"></div>'));
+    $('.jconfirm-box').parent().addClass('grid').addClass('ui');
 }

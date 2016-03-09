@@ -1,15 +1,44 @@
-<div class="ui modal">
-    <div class="header">Header</div>
+<div class="ui modal" id="createAddress">
+    <i class="close icon"></i>
+    <div class="header">
+        Adresses
+    </div>
     <div class="content">
-        <p></p>
+        <div class="ui form">
+            <input id="token" type="hidden" value="">
+            <div class="field">
+                <label>Address</label>
+                <input type="text" id="address">
+            </div>
+            <div class="two fields">
+                <div class="field">
+                    <label>Zip</label>
+                    <input type="text" id="zip">
+                </div>
+                <div class="field">
+                    <label>County</label>
+                    <input type="text" id="county">
+                </div>
+            </div>
+            <div class="field">
+                <label>Country</label>
+                <input type="text" id="country">
+            </div>
+            <div class="field">
+                <label>Phone</label>
+                <input type="text" id="phone">
+            </div>
+            <div class="field">
+                <label>E-mail</label>
+                <input type="text" id="email">
+            </div>
+        </div>
     </div>
     <div class="actions">
-        <div class="ui approve button">Approve</div>
-        <div class="ui button">Neutral</div>
-        <div class="ui cancel button">Cancel</div>
+        <div class="ui red cancel button">Cancel</div>
+        <div class="ui positive button">Save</div>
     </div>
 </div>
-
 <!--<form name="formHorpak" id="formHorpak" class="validate" method="POST" action="<?= site_url('backend/saveHorpak') ?>">
     <div id="modalHorpak" class="modal modal-fixed-footer">
         <div class="modal-content">

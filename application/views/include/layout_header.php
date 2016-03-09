@@ -13,6 +13,7 @@
 
 
         <script type="text/javascript" src="<?php echo base_url() . "js/jquery-1.11.2.min" ?>"></script>           
+        <script type="text/javascript" src="<?php echo base_url() . "semantic/semantic.js" ?>"></script>   
         <script type="text/javascript" src="<?php echo base_url() . "semantic/semantic.min.js" ?>"></script>   
         <script type="text/javascript" src="<?php echo base_url() . "js/validate/jquery.validate.min" ?>"></script>   
 

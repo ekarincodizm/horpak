@@ -1,12 +1,12 @@
 <div class="ui grid">
     <div class="sixteen wide column">
-        <a class="ui right floated small primary labeled icon button"
-           onclick="initModal()"
+        <a class="ui right floated small primary labeled icon button btn-new"
+
            data-id="<?= $horpak->code_id ?>">
             <i class="user icon"></i> ข้อมูลใหม่
         </a>
     </div>
-    <?php $this->load->view('/private/modal_horpak');?>
+    <?php $this->load->view('/private/modal_horpak'); ?>
     <div class="sixteen wide column">
         <table class="ui sortable celled table">
             <thead>
@@ -54,22 +54,23 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        
+    $(function () {
+        $('.btn-new').on('click', function (value) {
+            var element = this;
+            $('.ui.modal')
+                    .modal({
+                        closable: false,
+                        onDeny: function () {
+                            window.alert('Wait not yet!');
+                            return false;
+                        },
+                        onApprove: function () {
+                            window.alert('Approved!');
+                        }
+                    })
+                    .modal('show');
+        });
     });
-    function initModal() {
-        $('div.modal').modal({
-            closable: false,
-            onDeny: function () {
-                window.alert('Wait not yet!');
-                return false;
-            },
-            onApprove: function () {
-                window.alert('Approved!');
-            }
-        }).modal('show');
-    }
-
 //    $.post('<?= site_url('BackendJson/getHorpak') ?>', {
 //        id: $(element).attr('data-id'),
 //    }, function (resp) {

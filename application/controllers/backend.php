@@ -35,7 +35,7 @@ class Backend extends CI_Controller {
         }
         $data['horpaks'] = $this->horpak_model->getDataAll();
         $this->load->view('/include/layout_header');
-        $this->load->view('/private/horpak_crud', $data);
+        $this->load->view('/private/list_horpak', $data);
         $this->load->view('/include/layout_footer');
     }
 
@@ -54,6 +54,7 @@ class Backend extends CI_Controller {
             }
         }
     }
+
     /*
      * Horpak Crud
      */
@@ -64,7 +65,7 @@ class Backend extends CI_Controller {
      */
 
     public function roomType() {
-        $this->load->model('RoomType_model');
+        $this->load->model('roomtype_modal');
         $data['roomtypes'] = $this->RoomType_model->getDataAll();
         $this->load->view('/include/layout_header');
         $this->load->view('/private/roomType_crud', $data);
@@ -77,6 +78,49 @@ class Backend extends CI_Controller {
 
     public function deleteroomType() {
         
+    }
+
+    /*
+     * RoomType Crud
+     */
+
+
+
+    /*
+     * RoomType Crud
+     */
+
+    public function config() {
+        $this->load->model('config_model');
+        $data['configs'] = $this->config_model->getDataAll();
+        $this->load->view('/include/layout_header');
+        $this->load->view('/private/list_config', $data);
+        $this->load->view('/include/layout_footer');
+    }
+
+    public function saveConfig() {
+        $exec = false;
+        if (!empty($_POST)) {
+            $this->load->model('config_model');
+            $this->config_model->setData($_POST);
+            if (empty($_POST['code_id'])) {
+                $exec = $this->config_model->insertData();
+            } else {
+                $exec = $this->config_model->updateData();
+            }
+            if ($exec) {
+                redirect('/backend/config', 'refresh');
+            }
+        }
+    }
+
+    public function deleteConfig($codeId) {
+        if (!empty($codeId)) {
+            $this->load->model('config_model');
+            if ($this->config_model->deleteData($codeId)) {
+                redirect('/backend/config', 'refresh');
+            }
+        }
     }
 
     /*

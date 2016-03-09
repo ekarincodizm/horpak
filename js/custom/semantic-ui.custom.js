@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function(){
-  $('.ui.modal').modal('show');
-  
+$(document).ready(function () {
+    
 });

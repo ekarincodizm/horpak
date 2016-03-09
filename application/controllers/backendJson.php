@@ -27,6 +27,17 @@ class BackendJson extends CI_Controller {
         $this->functionhelper->jsonEncode($data);
     }
 
+    public function getConfig() {
+        $this->load->model('config_model');
+        $data = array();
+        if (empty($_GET['id'])) {
+            $data = $this->config_model;
+        } else {
+            $data = $this->config_model->getDataSingle($_GET['id']);
+        }
+        $this->functionhelper->jsonEncode($data);
+    }
+
     public function deleteHorpak() {
         $this->load->model('horpak_model');
         $this->functionhelper->jsonEncode(array(
