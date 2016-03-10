@@ -8,19 +8,23 @@
         <link rel="stylesheet" href="<?php echo base_url() . "css/font-awesome.min.css" ?>">
 
         <link rel="stylesheet" href="<?php echo base_url() . 'plugins/jquery-confirm/css/jquery-confirm.css' ?>">
-
+        <link rel="stylesheet" href="<?php echo base_url() . 'css/datatables/dataTables.semanticui.min.css' ?>">
         <link rel="stylesheet" href="<?php echo base_url() . 'css/horpak-style.css' ?>">
 
 
         <script type="text/javascript" src="<?php echo base_url() . "js/jquery-1.11.2.min" ?>"></script>           
         <script type="text/javascript" src="<?php echo base_url() . "semantic/semantic.js" ?>"></script>   
         <script type="text/javascript" src="<?php echo base_url() . "semantic/semantic.min.js" ?>"></script>   
-        <script type="text/javascript" src="<?php echo base_url() . "js/validate/jquery.validate.min" ?>"></script>   
-
+        <script type="text/javascript" src="<?php echo base_url() . "js/validate/jquery.validate.min.js" ?>"></script>  
+        
+        <!-- Datatable-->
+        <script type="text/javascript" src="<?php echo base_url() . "js/datatables/jquery.dataTables.min.js" ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url() . "js/datatables/dataTables.semanticui.min.js" ?>"></script>
+        <!-- Datatable-->
+        
         <script type="text/javascript" src="<?php echo base_url() . 'plugins/jquery-confirm/js/jquery-confirm.js' ?>"></script>
 
-        <script type="text/javascript" src="<?php echo base_url() . 'js/custom/horpak.custom.js' ?>"></script>       
-        <script type="text/javascript" src="<?php echo base_url() . 'js/custom/semantic-ui.custom.js' ?>"></script>       
+        <script type="text/javascript" src="<?php echo base_url() . 'js/custom/horpak.custom.js' ?>"></script>           
         <style type="text/css">
             body *{
                 font-family: 'Superspace';

@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/AppServ/www/horpak/application/views/private/list_horpak.php</file>
+            <file>file:/C:/AppServ/www/horpak/application/views/private/list_config.php</file>
+            <file>file:/C:/AppServ/www/horpak/application/views/private/modal_config.php</file>
+            <file>file:/C:/AppServ/www/horpak/js/custom/horpak.custom.js</file>
+            <file>file:/C:/AppServ/www/horpak/application/controllers/backend.php</file>
+        </group>
     </open-files>
 </project-private>

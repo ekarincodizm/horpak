@@ -37,7 +37,7 @@
                         </td>
                         <td>
                             <a class="ui small red button btn-delete" href="javascript:void(0)" 
-                               onclick="deleteConfig('<?= site_url('Backend/DeleteConfig/' . $data['code_id']) ?>')">
+                               data-url="<?= site_url('Backend/DeleteConfig/' . $data['code_id']) ?>">
                                 <i class="remove icon"></i> ลบ
                             </a>
                         </td>
@@ -48,41 +48,5 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    $(function () {
-        $('.btn-form').on('click', function (value) {
-            var element = this;
-            var id = $(element).attr('data-id');
-            var url = $('.ui.form').attr('data-url');
-            console.log('id ::=='+id);
-            console.log('url ::=='+url);
-            if (url === undefined) {
-                alert('ใส่  attribute data-url ใน form ระบุ url ที่ไป get data ด้วย');
-                return;
-            } else {
-                if (id !== undefined) {
-                    $.get(url, {id: id}, function (resp) {
-                        $.each(resp, function (key, value) {
-                            $('.ui.form').find("input[name='" + key + "']").val(value);
-                        });
-                    }, 'json');
-                } else {
-                    //alert('แน่ใจว่าใส่  attribute data-id คือ id ที่จะลบ ใน ปุ่มคลิกลบแล้วใช่ไหม');
-                    $('.ui.form').find("input[type=text], textarea").val("");
-                }
-            }
-
-            $('.ui.modal').modal({
-                closable: false,
-                onDeny: function () {
-                    return false;
-                },
-                onApprove: function () {
-                    //this.modal('hide');
-                }
-            }).modal('show');
-        });
-    });
-</script>
 
 
