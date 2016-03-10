@@ -35,6 +35,10 @@ $.extend(true, $.fn.dataTable.defaults, {
     }
 });
 
+/*
+ * @param {type} param
+ * http://www.mitrahsoft.com/index.cfm/blog/jQuery-validation-error-placement-for-Semantic-UI
+ */
 $.validator.setDefaults({
     errorClass: 'errorField',
     errorElement: 'div',
@@ -53,6 +57,12 @@ $.validator.setDefaults({
  * ***************************Jquery Plugin Default*****************************
  */
 
+function reDesignElement() {
+    $('.jconfirm-box').parent().prepend($('<div class="six wide column"></div>'));
+    $('.jconfirm-box').parent().addClass('grid').addClass('ui');
+    $('.jconfirm-box').addClass('four').addClass('wide').addClass('column');
+}
+
 function customDatatable() {
     $('.table').DataTable();
 }
@@ -67,6 +77,19 @@ function customValidation() {
         }
     });
 }
+
+function toastMessage(title, contentMessage,btnMessage) {
+    $.alert({
+        title: title,
+        content: contentMessage,
+        confirmButton: btnMessage,
+        confirmButtonClass: 'ui button orange',
+        confirmIcon: true,
+        confirmIconClass: 'fa fa-ok',
+    });
+    reDesignElement();
+}
+
 function crud() {
     $(document).on('click', '.btn-form', function () { // 
         var element = this;
@@ -124,7 +147,6 @@ function crud() {
                 //$.alert('Canceled!')
             }
         });
-        $('.jconfirm-box').parent().prepend($('<div class="six wide column"></div>'));
-        $('.jconfirm-box').parent().addClass('grid').addClass('ui');
+        reDesignElement();
     });
 }

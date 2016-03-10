@@ -87,7 +87,7 @@ class Backend extends CI_Controller {
 
 
     /*
-     * RoomType Crud
+     * Config Crud
      */
 
     public function config() {
@@ -124,6 +124,48 @@ class Backend extends CI_Controller {
     }
 
     /*
-     * RoomType Crud
+     * Config Crud
+     */
+
+
+    /*
+     * Label Crud
+     */
+
+    public function label() {
+        $this->load->model('label_model');
+        $data['labels'] = $this->label_model->getDataAll();
+        $this->load->view('/include/layout_header');
+        $this->load->view('/private/list_label', $data);
+        $this->load->view('/include/layout_footer');
+    }
+
+    public function saveLabel() {
+        $exec = false;
+        if (!empty($_POST)) {
+            $this->load->model('label_model');
+            $this->label_model->setData($_POST);
+            if (empty($_POST['c_group'])) {
+                $exec = $this->label_model->insertData();
+            } else {
+                $exec = $this->label_model->updateData();
+            }
+            if ($exec) {
+                redirect('/backend/label', 'refresh');
+            }
+        }
+    }
+
+    public function deleteLabel($cGroup) {
+        if (!empty($cGroup)) {
+            $this->load->model('label_model');
+            if ($this->label_model->deleteData($cGroup)) {
+                redirect('/backend/label', 'refresh');
+            }
+        }
+    }
+
+    /*
+     * Config Crud
      */
 }

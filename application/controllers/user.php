@@ -8,27 +8,6 @@
 
 class User extends CI_Controller {
 
-    public function __construct() {
-        parent::__construct();
-        $this->load->database();
-        $this->load->helper('url');
-        $this->load->library('corehelper');
-    }
-
-    public function login() {        
-        $this->load->view('/login');
-    }
-
-    public function register() {
-        
-    }
-
-    public function logout() {
-        
-    }
-
-    public function changeProfile() {
-        
-    }
+    
 
 }

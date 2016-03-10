@@ -12,12 +12,29 @@ class FunctionHelper {
         header('Content-Type: application/json');
     }
 
-    public  function jsonEncode($string) {        
+    public function jsonEncode($string) {
         echo json_encode($string);
     }
 
-    public  function jsonDecode() {
-        echo json_decode($string);
+    public function jsonDecode($json) {
+        echo json_decode($json);
+    }
+
+    public function jsonResponse($status, $message, $url) {
+        echo json_decode(array(
+            'status' => $status,
+            'message' => $message,
+            'url' => $url
+        ));
+    }
+
+    public function jsonDataResponse($status, $message, $url, $data) {
+        echo json_encode(array(
+            'status' => $status,
+            'message' => $message,
+            'url' => $url,
+            'data' => $data
+        ));
     }
 
 }

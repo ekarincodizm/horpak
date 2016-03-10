@@ -14,6 +14,12 @@ class Horpak extends CI_Controller {
         $this->load->view('main_menu', $data);
         $this->load->view('/include/layout_footer');
     }
+    
+    public function login() {
+        $this->load->view('/include/layout_header');
+        $this->load->view('/login');
+        $this->load->view('/include/layout_footer');
+    }
 
     public function subMenu($feature = null) {
         $data['features'] = $this->corehelper->getFeaturesSubCore();
