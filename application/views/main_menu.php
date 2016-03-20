@@ -1,8 +1,8 @@
-<div class="ui grid">
+<div class="ui grid stackable four column container">
     <?php foreach ($features as $key => $feature) { ?>
-        <div class="four wide column">
+        <div class="column">
             <div class="ui cards">
-                <div class="<?=$feature['color']?> card">
+                <div class="<?=$feature['color']?> card ">
                     <div class="content center aligned segment">
                         <i class="fa <?=$feature['icon']?> fa-5x"></i>
                         <div class="header">

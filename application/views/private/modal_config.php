@@ -1,6 +1,6 @@
 <div class="ui modal" id="modal-form">
     <i class="close icon"></i>
-    <form class="ui form segment error validate" id="form-config"
+    <form class="ui form horpak segment error validate" id="form-config"
           data-url="<?= site_url('BackendJson/getConfig') ?>"
           action="<?= site_url('Backend/saveConfig') ?>" method="post">        
         <div class="header">
@@ -39,9 +39,9 @@
                 </div>
             </div>
         </div>
-        <div class="actions">
+        <div class="actions">            
+            <button type="button" class="ui green submit button"><i class="save icon"></i> บันทึก</button>
             <div class="ui red close button"><i class="close icon"></i> ปิด</div>
-            <button type="submit" class="ui green submit button"><i class="save icon"></i> บันทึก</button>
         </div>
     </form>
 </div>

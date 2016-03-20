@@ -72,13 +72,13 @@ function customValidation() {
         e.preventDefault();
     }).validate({
         submitHandler: function (form) {
-            console.log(form);
+            //console.log(form);
             form.submit();
         }
     });
 }
 
-function toastMessage(title, contentMessage,btnMessage) {
+function toastMessage(title, contentMessage, btnMessage) {
     $.alert({
         title: title,
         content: contentMessage,
@@ -91,12 +91,11 @@ function toastMessage(title, contentMessage,btnMessage) {
 }
 
 function crud() {
+    var formSeletor = '.ui.form.horpak';
     $(document).on('click', '.btn-form', function () { // 
         var element = this;
         var id = $(element).attr('data-id');
-        var url = $('.ui.form').attr('data-url');
-        console.log('id ::==' + id);
-        console.log('url ::==' + url);
+        var url = $(formSeletor).attr('data-url');
         if (url === undefined) {
             alert('ใส่  attribute data-url ใน form ระบุ url ที่ไป get data ด้วย');
             return;
@@ -104,13 +103,26 @@ function crud() {
             if (id !== undefined) {
                 $.get(url, {id: id}, function (resp) {
                     $.each(resp, function (key, value) {
-                        $('.ui.form').find("input[name='" + key + "']").val(value);
+                        $('.ui.form.horpak').find("input[name='" + key + "']").val(value);
+                        $('.ui.form.horpak').find("select[name='" + key + "']").val(value);
+                        var checkbox = $('.ui.form.horpak').find('input[type="checkbox"][name="' + key + '"]');
+                        if ($(checkbox).val() == value) {
+                            $(checkbox).attr('checked', true);
+                        }
+                        var radio = $('.ui.form.horpak').find('input[type="radio"][name="' + key + '"]');
+                        if ($(radio).val() == value) {
+                            $(checkbox).attr('checked', true);
+                        }
                     });
                 }, 'json');
             } else {
                 //alert('แน่ใจว่าใส่  attribute data-id คือ id ที่จะลบ ใน ปุ่มคลิกลบแล้วใช่ไหม');
-                $('.ui.form').find("input[type=text], textarea").val("");
+                $('.ui.form.horpak').find("input[type=text], textarea").val("");
+                $('.ui.form.horpak').find("select").val("");
+                $('.ui.form.horpak').find('input[type="checkbox"]').attr('checked', false);
+                $('.ui.form.horpak').find('input[type="radio"]').attr('checked', true);
             }
+            checkHiddenFieldError(formSeletor);
         }
 
         $('.ui.modal').modal({
@@ -148,5 +160,41 @@ function crud() {
             }
         });
         reDesignElement();
+    }).on('click', '.ui.green.submit.button', function () {
+        $.confirm({
+            icon: 'fa fa-warning',
+            title: 'ท่านกำลังจะบันทึกข้อมูล',
+            content: 'ยืนยันการบันทึกข้อมูล',
+            confirmButton: 'ใช่ บันทึก',
+            cancelButton: 'ไม่ใช่ ยกเลิก',
+            confirmButtonClass: 'ui button green',
+            cancelButtonClass: 'ui button red',
+            columnClass: 'ui grid',
+            closeIcon: true,
+            closeIconClass: 'fa fa-close', // or 'glyphicon glyphicon-remove'
+            confirm: function () {
+                $(formSeletor).submit();
+            },
+            cancel: function () {
+                //$.alert('Canceled!')
+            }
+        });
+        reDesignElement();
+    });
+}
+
+function checkHiddenFieldError(formSeletor) {
+    var inputSeletors = $(formSeletor).find('input,select,textarea');
+    $.each(inputSeletors, function (index, input) {
+        var value = $(input).val();
+        //console.log('value ::==' + value);
+        if (value !== '') {
+            $(input).parent().removeClass("error");
+            $(input).parent().removeClass("error");
+            $(input).parent().find('.errorField.ui.red').empty();
+        } else {
+            $(input).parent().addClass("error");
+            $(input).parent().addClass("error");
+        }
     });
 }

@@ -16,14 +16,14 @@
         <script type="text/javascript" src="<?php echo base_url() . "semantic/semantic.js" ?>"></script>   
         <script type="text/javascript" src="<?php echo base_url() . "semantic/semantic.min.js" ?>"></script>   
         <script type="text/javascript" src="<?php echo base_url() . "js/validate/jquery.validate.min.js" ?>"></script>  
-        
+
         <!-- Datatable-->
         <script type="text/javascript" src="<?php echo base_url() . "js/datatables/jquery.dataTables.min.js" ?>"></script>
         <script type="text/javascript" src="<?php echo base_url() . "js/datatables/dataTables.semanticui.min.js" ?>"></script>
         <!-- Datatable-->
-        
-        <script type="text/javascript" src="<?php echo base_url() . 'plugins/jquery-confirm/js/jquery-confirm.js' ?>"></script>
 
+        <script type="text/javascript" src="<?php echo base_url() . 'plugins/jquery-confirm/js/jquery-confirm.js' ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url() . 'js/custom/dropdown.custom.js' ?>"></script>           
         <script type="text/javascript" src="<?php echo base_url() . 'js/custom/horpak.custom.js' ?>"></script>           
         <style type="text/css">
             body *{
@@ -32,29 +32,62 @@
         </style>
     </head>
     <body>
-        <div class="ui attached stackable menu fixed">
-            <div class="ui container">
-                <a class="item" href="<?=  site_url('horpak/index')?>">
-                    <i class="home icon"></i> Home
-                </a>
-                <a class="item">
-                    <i class="grid layout icon"></i> Browse
-                </a>
-                <a class="item">
-                    <i class="mail icon"></i> Messages
-                </a>
-                <div class="ui simple dropdown item">
-                    More
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <a class="item"><i class="edit icon"></i> Edit Profile</a>
-                        <a class="item"><i class="globe icon"></i> Choose Language</a>
-                        <a class="item"><i class="settings icon"></i> Account Settings</a>
+        <div class="ui grid">
+            <div class="computer tablet only row">
+                <div class="ui inverted blue fixed menu navbar page grid">
+                    <a href="" class="brand item"><i class="fa fa-building fa-2x"></i> Horpak</a>
+                    <a class="item" href="<?= site_url('horpak/index') ?>">
+                        <i class="fa fa-home fa-2x"></i> Home
+                    </a>
+                    <a href="" class="item">About</a>
+                    <a href="" class="item">Contact</a>
+                    <a class="ui dropdown item">Dropdown
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item">Action</div>
+                            <div class="item">Another action</div>
+                            <div class="item">Something else here</div>
+                            <div class="ui divider"></div>
+                            <div class="item">Seperated link</div>
+                            <div class="item">One more seperated link</div>
+                        </div>
+                    </a>
+                    <div class="right menu">
+                        <a href="" class="item">Fixed top</a>
                     </div>
                 </div>
-                <div class="right item">
-                    <div class="ui input"><input placeholder="Search..." type="text"></div>
+            </div>
+            <div class="mobile only row">
+                <div class="ui fixed inverted navbar menu">
+                    <a href="" class="brand item">Project Name</a>
+                    <div class="right menu open">
+                        <a href="" class="menu item">
+                            <i class="content icon"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ui vertical navbar menu">
+                    <a href="" class="active item">Home</a>
+                    <a href="" class="item">About</a>
+                    <a href="" class="item">Contact</a>
+                    <div class="ui item">
+                        <div class="text">Dropdown</div>
+                        <div class="menu">
+                            <a class="item">Action</a>
+                            <a class="item">Another action</a>
+                            <a class="item">Something else here</a>
+                            <a class="ui aider"></a>
+                            <a class="item">Seperated link</a>
+                            <a class="item">One more seperated link</a>
+                        </div>
+                    </div>
+                    <div class="menu">
+                        <a href="" class="active item">Default</a>
+                        <a href="" class="item">Static top</a>
+                        <a href="" class="item">Fixed top</a>
+                    </div>
                 </div>
             </div>
         </div>
+
         <div class="ui  container" style="margin-top: 60px;">
