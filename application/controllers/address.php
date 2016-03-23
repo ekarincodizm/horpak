@@ -21,19 +21,47 @@ class Address extends CI_Controller {
     public function getAmphur() {
         $provinceId = $_GET['provinceId'];
         header('Content-Type: application/json');
-        $this->load->model('amphur_model');
-        $amphurInProovince = $this->amphur_model->getDataAllByProvince($provinceId);
-        $jsonDropdown = array();
-        foreach ($amphurInProovince as $index => $amphur) {
-            $jsonDropdown[] = array(
-                "name" => $amphur['amphur_name'],
-                "value" => $amphur['amphur_id']
-            );
-        }
+
+        $this->db
+                ->select('amphur_name as name,amphur_id as value')
+                ->from('u_amphur')->where('province_id', $provinceId);
+        $query = $this->db->get();
+        $jsonDropdown = $query->result_array();
 
         echo json_encode(array(
             "success" => true,
             "results" => $jsonDropdown
+        ));
+    }
+    
+    public function getCity() {
+        $amphur = $_GET['state'];
+        header('Content-Type: application/json');
+
+        $this->db
+                ->select('district_name as name,district_id as value')
+                ->from('u_district')->where('amphur_id', $amphur);
+        $query = $this->db->get();
+        $jsonDropdown = $query->result_array();
+
+        echo json_encode(array(
+            "success" => true,
+            "results" => $jsonDropdown
+        ));
+    }
+    
+    public function getZipcode() {
+        $amphur = $_GET['amphur'];
+        header('Content-Type: application/json');
+        $this->db
+                ->select('postcode')
+                ->from('u_amphur')->where('amphur_id', $amphur);
+        $query = $this->db->get();
+        $jsonZipcode = $query->row();
+
+        echo json_encode(array(
+            "success" => true,
+            "results" => $jsonZipcode
         ));
     }
 

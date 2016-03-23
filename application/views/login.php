@@ -35,19 +35,19 @@
         }).validate({
             submitHandler: function (form) {
                 $.ajax({
-                    url: '<?= site_url('horpakJson/login') ?>',
+                    url: '<?= site_url('user/login') ?>',
                     data: $(form).serialize(),
                     dataType: 'json',
                     type: 'post',
-                    success: function (resp) {                       
+                    success: function (resp) {
                         if (resp.status) {
                             window.location.href = resp.url;
-                        }else{
-                            toastMessage('สถานะการเข้าใช้งานระบบ', resp.message, 'กรุณาตรวจสอบข้อมูลอีกครั้ง');
+                        } else {
+                            toastMessageInfo(resp);
                         }
                     },
                     error: function (err, xhrr, http) {
-
+                        toastMessageError({title: 'Application Error', message: err.responseText});
                     }
                 })
             }

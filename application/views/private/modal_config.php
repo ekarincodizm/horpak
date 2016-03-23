@@ -2,7 +2,7 @@
     <i class="close icon"></i>
     <form class="ui form horpak segment error validate" id="form-config"
           data-url="<?= site_url('BackendJson/getConfig') ?>"
-          action="<?= site_url('Backend/saveConfig') ?>" method="post">        
+          action="<?= site_url('BackendJson/saveConfig') ?>" method="post">        
         <div class="header">
             <h2>M_Config</h2>
         </div>
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="actions">            
-            <button type="button" class="ui green submit button"><i class="save icon"></i> บันทึก</button>
+            <button type="submit" class="ui green submit button"><i class="save icon"></i> บันทึก</button>
             <div class="ui red close button"><i class="close icon"></i> ปิด</div>
         </div>
     </form>

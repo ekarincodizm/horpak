@@ -6,6 +6,13 @@
 /*
  * Global Varliable
  */
+var FormValidate = {};
+var TransitionMotion = [
+    'slide up', 'slide down', 'scale', 'fade down',
+    'fade up', 'fade', 'vertical flip', 'horizontal flip',
+    'bounce', 'tada', 'pulse', 'flash', 'shake']
+var FormSeletor = '.ui.form.horpak';
+
 $(document).ready(function () {
     customDatatable();
     customValidation();
@@ -68,21 +75,49 @@ function customDatatable() {
 }
 
 function customValidation() {
-    $('form.validate').submit(function (e) {
+    FormValidate = $('form.validate').submit(function (e) {
         e.preventDefault();
-    }).validate({
-        submitHandler: function (form) {
-            //console.log(form);
-            form.submit();
+    }).validate({submitHandler: function (form) {
+            $.confirm({
+                icon: 'fa fa-warning',
+                title: 'ท่านกำลังจะบันทึกข้อมูล',
+                content: 'ยืนยันการบันทึกข้อมูล',
+                confirmButton: 'ใช่ บันทึก',
+                cancelButton: 'ไม่ใช่ ยกเลิก',
+                confirmButtonClass: 'ui button green',
+                cancelButtonClass: 'ui button red',
+                columnClass: 'ui grid',
+                closeIcon: true,
+                closeIconClass: 'fa fa-close', // or 'glyphicon glyphicon-remove'
+                confirm: function () {
+                    $.ajax({
+                        url: $(FormSeletor).attr('action'),
+                        data: $(FormSeletor).serialize(),
+                        dataType: 'json',
+                        type: 'post',
+                        success: function (resp) {
+                            console.log(resp);
+                            if (resp.status) {
+                                window.location.href = resp.url;
+                            }
+                        },
+                        error: function (err, xhrr, http) {
+                            toastMessageError({title: 'Application Error', message: err.responseText});
+                        }
+                    })
+                },
+            });
+            reDesignElement();
         }
     });
 }
 
-function toastMessage(title, contentMessage, btnMessage) {
+function toastMessageError(resp) {
+    console.log(resp);
     $.alert({
-        title: title,
-        content: contentMessage,
-        confirmButton: btnMessage,
+        title: resp.title,
+        content: resp.message,
+        confirmButton: 'ปิด',
         confirmButtonClass: 'ui button orange',
         confirmIcon: true,
         confirmIconClass: 'fa fa-ok',
@@ -90,12 +125,23 @@ function toastMessage(title, contentMessage, btnMessage) {
     reDesignElement();
 }
 
+function toastMessageInfo(resp) {
+    $.alert({
+        title: resp.title,
+        content: resp.message,
+        confirmButton: 'ตกลง',
+        confirmButtonClass: 'ui button blue',
+        confirmIcon: true,
+        confirmIconClass: 'fa fa-ok',
+    });
+    reDesignElement();
+}
+
 function crud() {
-    var formSeletor = '.ui.form.horpak';
     $(document).on('click', '.btn-form', function () { // 
         var element = this;
         var id = $(element).attr('data-id');
-        var url = $(formSeletor).attr('data-url');
+        var url = $(FormSeletor).attr('data-url');
         if (url === undefined) {
             alert('ใส่  attribute data-url ใน form ระบุ url ที่ไป get data ด้วย');
             return;
@@ -122,18 +168,10 @@ function crud() {
                 $('.ui.form.horpak').find('input[type="checkbox"]').attr('checked', false);
                 $('.ui.form.horpak').find('input[type="radio"]').attr('checked', true);
             }
-            checkHiddenFieldError(formSeletor);
+            resetFormBlank(FormSeletor);
         }
 
-        $('.ui.modal').modal({
-            closable: false,
-            onDeny: function () {
-                return false;
-            },
-            onApprove: function () {
-                //this.modal('hide');
-            }
-        }).modal('show');
+        $('.ui.modal').modal({closable: false}).modal('setting', 'transition', TransitionMotion[1]).modal('show');
     }).on('click', '.btn-delete', function () {
         var element = this;
         var restUrlDelete = $(element).attr('data-url');
@@ -153,48 +191,46 @@ function crud() {
             closeIcon: true,
             closeIconClass: 'fa fa-close', // or 'glyphicon glyphicon-remove'
             confirm: function () {
-                window.location.href = restUrlDelete;// "<?= site_url('Backend/DeleteConfig') ?>" + "/" + codeId;
+                $.ajax({
+                    url: restUrlDelete,
+                    data: $(FormSeletor).serialize(),
+                    dataType: 'json',
+                    type: 'post',
+                    success: function (resp) {
+                        if (resp.status) {
+                            window.location.href = resp.url;
+                        } else {
+                            toastMessageError(resp);
+                        }
+                    },
+                    error: function (err, xhrr, http) {
+                        toastMessageError({title: 'Application Error', message: err.responseText});
+                    }
+                });
             },
-            cancel: function () {
-                //$.alert('Canceled!')
-            }
         });
         reDesignElement();
     }).on('click', '.ui.green.submit.button', function () {
-        $.confirm({
-            icon: 'fa fa-warning',
-            title: 'ท่านกำลังจะบันทึกข้อมูล',
-            content: 'ยืนยันการบันทึกข้อมูล',
-            confirmButton: 'ใช่ บันทึก',
-            cancelButton: 'ไม่ใช่ ยกเลิก',
-            confirmButtonClass: 'ui button green',
-            cancelButtonClass: 'ui button red',
-            columnClass: 'ui grid',
-            closeIcon: true,
-            closeIconClass: 'fa fa-close', // or 'glyphicon glyphicon-remove'
-            confirm: function () {
-                $(formSeletor).submit();
-            },
-            cancel: function () {
-                //$.alert('Canceled!')
-            }
-        });
-        reDesignElement();
+
     });
 }
 
-function checkHiddenFieldError(formSeletor) {
-    var inputSeletors = $(formSeletor).find('input,select,textarea');
-    $.each(inputSeletors, function (index, input) {
-        var value = $(input).val();
-        //console.log('value ::==' + value);
-        if (value !== '') {
-            $(input).parent().removeClass("error");
-            $(input).parent().removeClass("error");
-            $(input).parent().find('.errorField.ui.red').empty();
-        } else {
-            $(input).parent().addClass("error");
-            $(input).parent().addClass("error");
-        }
-    });
+function resetFormBlank(FormSeletor) {
+    setTimeout(function () {
+        var inputSeletors = $(FormSeletor).find('input,select,textarea');
+        $.each(inputSeletors, function (index, input) {
+            var value = $(input).val();
+            //console.log('value ::==' + value);
+            if (value !== '') {
+                $(input).parent().removeClass("error");
+                $(input).parent().removeClass("error");
+                $(input).parent().find('.errorField.ui.red').empty();
+            } else {
+                $(input).parent().addClass("error");
+                $(input).parent().addClass("error");
+            }
+        });
+    }, 200);
+    FormValidate.resetForm();
 }
+

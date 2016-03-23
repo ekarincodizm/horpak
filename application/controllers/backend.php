@@ -98,30 +98,6 @@ class Backend extends CI_Controller {
         $this->load->view('/include/layout_footer');
     }
 
-    public function saveConfig() {
-        $exec = false;
-        if (!empty($_POST)) {
-            $this->load->model('config_model');
-            $this->config_model->setData($_POST);
-            if (empty($_POST['code_id'])) {
-                $exec = $this->config_model->insertData();
-            } else {
-                $exec = $this->config_model->updateData();
-            }
-            if ($exec) {
-                redirect('/backend/config', 'refresh');
-            }
-        }
-    }
-
-    public function deleteConfig($codeId) {
-        if (!empty($codeId)) {
-            $this->load->model('config_model');
-            if ($this->config_model->deleteData($codeId)) {
-                redirect('/backend/config', 'refresh');
-            }
-        }
-    }
 
     /*
      * Config Crud

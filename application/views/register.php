@@ -1,4 +1,4 @@
-<form class="ui form segment" name="form-register" method="post" action="<?= site_url('horpak/register') ?>">
+<form class="ui form segment" name="form-register" method="post" action="<?= site_url('user/register') ?>">
     <div class="two fields">
         <div class="field">
             <label>First Name</label>
@@ -29,7 +29,7 @@
     <div class="two fields">
         <div class="field">
             <label>Province</label>
-            <select class="ui dropdown fluid search selection" name="province" required>
+            <select class="ui dropdown fluid selection" name="province" required>
                 <option value="">Province</option>
                 <?php foreach ($provinces as $index => $province) { ?>
                     <option value="<?= $province['province_id'] ?>"><?= $province['province_name'] ?></option>
@@ -38,17 +38,15 @@
         </div>
         <div class="field">
             <label>state</label>
-            <select class="ui dropdown" required="" name="state" aria-required="true"></select>
+            <select class="ui dropdown" required name="state" aria-required="true"></select>
+            <input type="hidden" name="state"/>
         </div>
     </div>
     <div class="two fields">
         <div class="field">
             <label>city</label>
-            <select class="ui dropdown" name="city" required>
-                <option value="">Gender</option>
-                <option value="1">Male</option>
-                <option value="0">Female</option>
-            </select>
+            <select class="ui dropdown" name="city" required aria-required="true"></select>
+            <input type="hidden" name="city"/>
         </div>
         <div class="field">
             <label>zipcode</label>
@@ -78,30 +76,57 @@
     <button type="submit" class="ui blue submit button">Submit</button>
 </form>
 <script type="text/javascript">
+    var DropdownValue = {};
     $(document).ready(function () {
         $('form[name="form-register"]').submit(function (e) {
             e.preventDefault();
         }).validate({
             submitHandler: function (form) {
-                console.log(form);
-                form.submit();
+                $.ajax({
+                    url: $(form).attr('action'),
+                    data: $(form).serialize(),
+                    dataType: 'json',
+                    type: 'post',
+                    success: function (resp) {
+                        console.log(resp);
+                        if (resp.status) {
+                            window.location.href = resp.url;
+                        }
+                    },
+                    error: function (err, xhrr, http) {
+                        toastMessageError({title: 'Application Error', message: err.responseText});
+                    }
+                });
             }
         });
         $('select[name="province"]').dropdown({
-            onChange: function (value, text, $selectedItem) {
+            onChange: function (value, text, $choice) {
+                DropdownValue.province = value;
                 var urlState = '<?= site_url('address/getAmphur') ?>';
                 $.get(urlState, {provinceId: value}, function (resp) {
-                    setDropdownOptions('select[name="state"]',resp);                    
+                    setDropdownOptions('select[name="state"]', resp);
                 }, 'json');
             },
-            placeholder: 'เลือก จังหวัด'
         });
-
+        $('select[name="state"]').dropdown({
+            onChange: function (value, text, $choice) {
+                DropdownValue.state = value;                
+                $('input[name="state"]').val(value);
+                var urlCity = '<?= site_url('address/getCity') ?>';
+                $.get(urlCity, {state: value}, function (resp) {
+                    setDropdownOptions('select[name="city"]', resp);
+                }, 'json');
+            },
+        })
         $('select[name="city"]').dropdown({
-            onChange: function (value, text, $selectedItem) {
-                console.log('value ::==' + value);
+            onChange: function (value, text) {
+                DropdownValue.city = value;
+                $('input[name="city"]').val(value);
+                var urlZipcode = '<?= site_url('address/getZipcode') ?>';
+                $.get(urlZipcode, {amphur: DropdownValue.state}, function (resp) {
+                    $('input[name="zipcode"]').val(resp.results.postcode);
+                }, 'json');
             }
         });
-
     });
 </script>

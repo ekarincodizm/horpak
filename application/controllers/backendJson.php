@@ -37,7 +37,29 @@ class BackendJson extends CI_Controller {
         }
         $this->functionhelper->jsonEncode($data);
     }
-    
+
+    public function saveConfig() {
+        $exec = false;
+        if (!empty($_POST)) {
+            $this->load->model('config_model');
+            $this->config_model->setData($_POST);
+            if (empty($_POST['code_id'])) {
+                $exec = $this->config_model->insertData();
+            } else {
+                $exec = $this->config_model->updateData();
+            }
+            $this->functionhelper->jsonResponseFull($exec, 'เกิดข้อผิดพลาด', 'ไม่สามารถบันทึกข้อมูลได้', site_url('backend/config'));
+        }
+    }
+
+    public function deleteConfig($codeId) {
+        if (!empty($codeId)) {
+            $this->load->model('config_model');
+            $exec = $this->config_model->deleteData($codeId);
+            $this->functionhelper->jsonResponseFull($exec, 'เกิดข้อผิดพลาด', 'ไม่สามารลบข้อมูลได้', site_url('backend/config'));
+        }
+    }
+
     public function getLabel() {
         $this->load->model('label_model');
         $data = array();

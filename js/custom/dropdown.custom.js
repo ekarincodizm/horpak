@@ -11,7 +11,7 @@ $(document).ready(function () {
         $('.ui.vertical.menu').toggle();
     });
 
-    $('.ui.dropdown').dropdown();
+    //$('.ui.dropdown').dropdown();
 });
 
 function setDinamicOptions(selector, options) {

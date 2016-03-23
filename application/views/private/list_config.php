@@ -1,7 +1,10 @@
 <div class="ui grid">
-    <div class="sixteen wide column">
+    <div class="eight wide column">
+        <h3>Config Management</h3>
+    </div>
+    <div class="eight wide column">
         <a class="ui right floated small primary labeled icon button btn-form">
-            <i class="user icon"></i> ข้อมูลใหม่
+            <i class="plus icon"></i> ข้อมูลใหม่
         </a>
     </div>
     <?php $this->load->view('/private/modal_config'); ?>
@@ -31,13 +34,13 @@
                         <td><?= $data['last_update'] ?></td>
                         <td><?= $data['update_by'] ?></td>
                         <td>
-                            <a class="ui small green button btn-form" data-id="<?= $data['code_id'] ?>">
-                                <i class="pencil icon"></i> แก้ไขข้อมูล
+                            <a class="ui small  labeled icon green button btn-form" data-id="<?= $data['code_id'] ?>">
+                                <i class="pencil icon"></i> แก้ไข
                             </a>
                         </td>
                         <td>
-                            <a class="ui small red button btn-delete" href="javascript:void(0)" 
-                               data-url="<?= site_url('Backend/DeleteConfig/' . $data['code_id']) ?>">
+                            <a class="ui small labeled icon red button btn-delete" href="javascript:void(0)" 
+                               data-url="<?= site_url('BackendJson/DeleteConfig/' . $data['code_id']) ?>">
                                 <i class="remove icon"></i> ลบ
                             </a>
                         </td>

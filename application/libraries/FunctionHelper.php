@@ -8,7 +8,16 @@
 
 class FunctionHelper {
 
+    var $status = false;
+    var $title = '';
+    var $message = '';
+    var $url = '';
+
     public function __construct() {
+        
+    }
+    
+    public function jsonHeader(){
         header('Content-Type: application/json');
     }
 
@@ -20,17 +29,27 @@ class FunctionHelper {
         echo json_decode($json);
     }
 
-    public function jsonResponse($status, $message, $url) {
-        echo json_decode(array(
+    public function jsonResponseBasic($status, $message, $url) {
+        echo json_encode(array(
             'status' => $status,
             'message' => $message,
             'url' => $url
         ));
     }
 
-    public function jsonDataResponse($status, $message, $url, $data) {
+    public function jsonResponseFull($status, $title, $message, $url) {
         echo json_encode(array(
             'status' => $status,
+            'title' => $title,
+            'message' => $message,
+            'url' => $url
+        ));
+    }
+
+    public function jsonDataResponseFull($status, $title, $message, $url, $data) {
+        echo json_encode(array(
+            'status' => $status,
+            'title' => $title,
             'message' => $message,
             'url' => $url,
             'data' => $data
