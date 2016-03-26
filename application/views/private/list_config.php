@@ -40,7 +40,7 @@
                         </td>
                         <td>
                             <a class="ui small labeled icon red button btn-delete" href="javascript:void(0)" 
-                               data-url="<?= site_url('BackendJson/DeleteConfig/' . $data['code_id']) ?>">
+                               data-url="<?= site_url('backendjson/deleteconfig/' . $data['code_id']) ?>">
                                 <i class="remove icon"></i> ลบ
                             </a>
                         </td>

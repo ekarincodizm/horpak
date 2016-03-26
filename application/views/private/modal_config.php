@@ -1,8 +1,8 @@
 <div class="ui modal" id="modal-form">
     <i class="close icon"></i>
     <form class="ui form horpak segment error validate" id="form-config"
-          data-url="<?= site_url('BackendJson/getConfig') ?>"
-          action="<?= site_url('BackendJson/saveConfig') ?>" method="post">        
+          data-url="<?= site_url('backendjson/getconfig') ?>"
+          action="<?= site_url('backendjson/saveconfig') ?>" method="post">        
         <div class="header">
             <h2>M_Config</h2>
         </div>
