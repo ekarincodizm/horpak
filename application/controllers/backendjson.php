@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-class BackendJson extends CI_Controller {
+class Backendjson extends CI_Controller {
 
     public function __construct() {
         parent::__construct();

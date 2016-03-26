@@ -1,8 +1,8 @@
 <div class="ui modal" id="modal-form">
     <i class="close icon"></i>
     <form class="ui form segment error validate" id="form-config"
-          data-url="<?= site_url('BackendJson/getLabel') ?>"
-          action="<?= site_url('Backend/saveLabel') ?>" method="post">        
+          data-url="<?= site_url('backendjson/getlabel') ?>"
+          action="<?= site_url('backend/savelabel') ?>" method="post">        
         <div class="header">
             <h2>M_Label</h2>
         </div>

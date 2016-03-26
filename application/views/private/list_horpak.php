@@ -42,7 +42,7 @@
                         <td>
                             <button class="btn confirm red accent-2"
                                     data-id="<?= $data['code_id'] ?>"
-                                    data-url="<?= site_url('BackendJson/deleteHorpak') ?>"
+                                    data-url="<?= site_url('backendjson/deletehorpak') ?>"
                                     >ลบ
                             </button>
                         </td>

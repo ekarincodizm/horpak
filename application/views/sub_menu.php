@@ -11,7 +11,7 @@
                     </div>
                     <div class="extra content">
                         <div class="ui two buttons">
-                            <div class="ui basic red button">
+                            <div class="ui basic <?= $feature['color'] ?> button ui inverted segment">
                                 <a href="<?= site_url('/horpak/doFeature/' . $feature['alias']) ?>"  style="color: #000000;font-weight: bold;">
                                     <h5><u><?= $feature['name_th'] ?></u></h5>
                                 </a>

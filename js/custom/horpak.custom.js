@@ -65,9 +65,11 @@ $.validator.setDefaults({
  */
 
 function reDesignElement() {
-    $('.jconfirm-box').parent().prepend($('<div class="six wide column"></div>'));
-    $('.jconfirm-box').parent().addClass('grid').addClass('ui');
-    $('.jconfirm-box').addClass('four').addClass('wide').addClass('column');
+//    $('.jconfirm-box').parent().prepend($('<div class="six wide column"></div>'));
+//    $('.jconfirm-box').parent().addClass('grid').addClass('ui');
+//    $('.jconfirm-box').addClass('four').addClass('wide').addClass('column');
+//jconfirm-box-container ui small modal transition visible
+    //$('.jconfirm-box-container').addClass('small').addClass('modal').addClass('transition').addClass('visible');
 }
 
 function customDatatable() {
