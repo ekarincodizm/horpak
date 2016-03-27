@@ -10,7 +10,12 @@
             <div class="field error">
                 <label>horpak_id</label>
                 <input type="hidden" name="code_id">
-                <input type="number" name="horpak_id" required>
+                <select class="ui dropdown" name="horpak_id" required>
+                    <option value="">--เลือก--</option>
+                    <?php foreach ($horpaks as $index => $horpak) { ?>
+                        <option value="<?= $horpak['code_id'] ?>"><?= $horpak['name_th'] ?></option>
+                    <?php } ?>
+                </select>
             </div>
             <div class="field error">
                 <label>service_name</label>
@@ -30,7 +35,12 @@
             </div>
             <div class="field error">
                 <label>service_status</label>
-                <input type="number" name="service_status" required>
+                <select class="ui dropdown horpak" name="service_status" required>
+                    <option value="">--เลือก--</option>
+                    <?php foreach ($labels as $index => $label) { ?>
+                        <option value="<?= $label['code_id'] ?>"><?= $label['c_label'] ?></option>
+                    <?php } ?>
+                </select>
             </div>
         </div>
     </div>

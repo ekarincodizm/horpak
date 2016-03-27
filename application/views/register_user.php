@@ -29,7 +29,7 @@
     <div class="two fields">
         <div class="field">
             <label>Province</label>
-            <select class="ui dropdown fluid selection" name="province" required>
+            <select class="ui dropdown search selection" name="province" required>
                 <option value="">Province</option>
                 <?php foreach ($provinces as $index => $province) { ?>
                     <option value="<?= $province['province_id'] ?>"><?= $province['province_name'] ?></option>
@@ -38,19 +38,19 @@
         </div>
         <div class="field">
             <label>state</label>
-            <select class="ui dropdown" required name="state" aria-required="true"></select>
+            <select class="ui dropdown" required name="state" aria-required="true" data-url='<?= site_url('address/getAmphur') ?>'></select>
             <input type="hidden" name="state"/>
         </div>
     </div>
     <div class="two fields">
         <div class="field">
             <label>city</label>
-            <select class="ui dropdown" name="city" required aria-required="true"></select>
+            <select class="ui dropdown" name="city" required aria-required="true" data-url='<?= site_url('address/getCity') ?>'></select>
             <input type="hidden" name="city"/>
         </div>
         <div class="field">
             <label>zipcode</label>
-            <input type="text" name="zipcode" required>
+            <input type="text" name="zipcode" required data-url='<?= site_url('address/getZipcode') ?>'>
         </div>
     </div>
     <div class="two fields">
@@ -73,10 +73,12 @@
             <input type="text" name="horpak_id" required>
         </div>
     </div>
-    <button type="submit" class="ui blue submit button">Submit</button>
+    <div class="ui center aligned segment">            
+        <button type="submit" class="ui green submit button"><i class="save icon"></i> บันทึก</button>
+        <div class="ui red close button"><i class="close icon"></i> ปิด</div>
+    </div>
 </form>
 <script type="text/javascript">
-    var DropdownValue = {};
     $(document).ready(function () {
         $('form[name="form-register"]').submit(function (e) {
             e.preventDefault();
@@ -99,34 +101,6 @@
                 });
             }
         });
-        $('select[name="province"]').dropdown({
-            onChange: function (value, text, $choice) {
-                DropdownValue.province = value;
-                var urlState = '<?= site_url('address/getAmphur') ?>';
-                $.get(urlState, {provinceId: value}, function (resp) {
-                    setDropdownOptions('select[name="state"]', resp);
-                }, 'json');
-            },
-        });
-        $('select[name="state"]').dropdown({
-            onChange: function (value, text, $choice) {
-                DropdownValue.state = value;                
-                $('input[name="state"]').val(value);
-                var urlCity = '<?= site_url('address/getCity') ?>';
-                $.get(urlCity, {state: value}, function (resp) {
-                    setDropdownOptions('select[name="city"]', resp);
-                }, 'json');
-            },
-        })
-        $('select[name="city"]').dropdown({
-            onChange: function (value, text) {
-                DropdownValue.city = value;
-                $('input[name="city"]').val(value);
-                var urlZipcode = '<?= site_url('address/getZipcode') ?>';
-                $.get(urlZipcode, {amphur: DropdownValue.state}, function (resp) {
-                    $('input[name="zipcode"]').val(resp.results.postcode);
-                }, 'json');
-            }
-        });
+
     });
 </script>

@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-class Horpak_model extends CI_Model {
+class PHorpak_model extends CI_Model {
 
     var $array_horpak = array();
     var $code_id = '';

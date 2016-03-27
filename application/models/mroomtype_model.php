@@ -25,7 +25,11 @@ class MRoomtype_model extends CI_Model {
     }
 
     public function getDataAll() {
-        $query = $this->db->get('m_room_type');
+        $query = $this->db
+                ->select('*')
+                ->from('m_room_type')
+                //->join('p_horpak', 'p_horpak.code_id = m_room_type.horpak_id', 'left')
+                ->get();
         return $query->result_array();
     }
 

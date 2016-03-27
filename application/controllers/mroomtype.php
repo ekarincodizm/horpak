@@ -18,7 +18,11 @@ class MRoomtype extends CI_Controller {
 
     public function index() {
         $this->load->model('mroomtype_model');
-        $data['labels'] = $this->mroomtype_model->getDataAll();
+        $data['roomtypes'] = $this->mroomtype_model->getDataAll();
+        
+        $this->load->model('phorpak_model');
+        $data['horpaks'] = $this->phorpak_model->getDataAll();
+        
         $this->load->view('/include/layout_header');
         $this->load->view('/private/list_roomtype', $data);
         $this->load->view('/include/layout_footer');
@@ -51,7 +55,7 @@ class MRoomtype extends CI_Controller {
         }
     }
 
-    public function deleteRoomtype1($codeId) {
+    public function deleteRoomtype($codeId) {
         $this->functionhelper->jsonHeader();
         if (!empty($codeId)) {
             $this->load->model('mroomtype_model');

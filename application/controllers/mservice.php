@@ -13,20 +13,27 @@ class MService extends CI_Controller {
         $this->load->database();
         $this->load->helper('url');
         $this->load->library('corehelper');
-        $this->load->library('functionhelper');        
+        $this->load->library('functionhelper');
+        
+        $this->load->model('mservice_model');
     }
 
     public function index() {
-        $this->load->model('mservice_model');
         $data['services'] = $this->mservice_model->getDataAll();
+
+        $this->load->model('mlabel_model');
+        $data['labels'] = $this->mlabel_model->getDataAllByGroup('SERVICE_STATUS');
+
+        $this->load->model('phorpak_model');
+        $data['horpaks'] = $this->phorpak_model->getDataAll();
+
         $this->load->view('/include/layout_header');
         $this->load->view('/private/list_service', $data);
         $this->load->view('/include/layout_footer');
     }
 
     public function getService() {
-        $this->functionhelper->jsonHeader();
-        $this->load->model('mservice_model');
+        $this->functionhelper->jsonHeader();        
         $data = array();
         if (empty($_GET['id'])) {
             $data = $this->mservice_model;
@@ -40,7 +47,6 @@ class MService extends CI_Controller {
         $this->functionhelper->jsonHeader();
         $exec = false;
         if (!empty($_POST)) {
-            $this->load->model('mservice_model');
             $this->mservice_model->setData($_POST);
             if (empty($_POST['code_id'])) {
                 $exec = $this->mservice_model->insertData();
@@ -54,7 +60,6 @@ class MService extends CI_Controller {
     public function deleteService($codeId) {
         $this->functionhelper->jsonHeader();
         if (!empty($codeId)) {
-            $this->load->model('mservice_model');
             $exec = $this->mservice_model->deleteData($codeId);
             $this->functionhelper->jsonResponseFull($exec, 'เกิดข้อผิดพลาด', 'ไม่สามารลบข้อมูลได้', site_url('mservice/index'));
         }

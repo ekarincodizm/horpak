@@ -10,7 +10,12 @@
             <div class="field error">
                 <label>horpak_id</label>
                 <input type="hidden" name="code_id">
-                <input type="text" name="horpak_id" required>
+                <select class="ui dropdown" name="horpak_id" required>
+                    <option value="">--เลือก--</option>
+                    <?php foreach ($horpaks as $index => $horpak) { ?>
+                        <option value="<?= $horpak['code_id'] ?>"><?= $horpak['name_th'] ?></option>
+                    <?php } ?>
+                </select>
             </div>
             <div class="field error">
                 <label>type_name</label>
@@ -20,7 +25,7 @@
         <div class="two fields">
             <div class="field error">
                 <label>std_price</label>
-                <input type="text" name="std_price" required>
+                <input type="number" name="std_price" required>
             </div>
         </div>
         <div class="field">

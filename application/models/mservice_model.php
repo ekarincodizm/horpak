@@ -21,13 +21,22 @@ class MService_model extends CI_Model {
     }
 
     public function getDataSingle($id) {
-        $this->db->from('m_service')->where('code_id', $id);
-        $query = $this->db->get();
+        $query = $this->db
+                ->select('*')
+                ->from('m_service')
+                ->where('code_id', $id)
+                ->get();
         return $query->row();
     }
 
     public function getDataAll() {
-        $query = $this->db->get('m_service');
+        $this->db
+                ->select('*')
+                ->from('m_service')
+                ->join('m_label l', 'l.code_id = m_service.service_status','left')
+                ->join('p_horpak h', 'h.code_id = m_service.horpak_id','left')
+                ;
+        $query = $this->db->get();
         return $query->result_array();
     }
 

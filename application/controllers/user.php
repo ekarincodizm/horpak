@@ -49,7 +49,7 @@ class User extends CI_Controller {
             $this->load->model('province_model');
             $provinces = $this->province_model->getDataAll();
             $this->load->view('/include/layout_header');
-            $this->load->view('/register', array(
+            $this->load->view('/register_user', array(
                 'provinces' => $provinces
             ));
             $this->load->view('/include/layout_footer');

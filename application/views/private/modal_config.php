@@ -7,24 +7,29 @@
     </div>
     <div class="content">
         <div class="two fields">
-            <div class="field error">
+            <div class="field">
                 <label>horpak_id</label>
                 <input type="hidden" name="code_id">
-                <input type="text" name="horpak_id" required>
+                <select class="ui dropdown selection" name="horpak_id" required>
+                    <option value="">--เลือก--</option>
+                    <?php foreach ($horpaks as $index => $horpak) { ?>
+                        <option value="<?= $horpak['code_id'] ?>"><?= $horpak['name_th'] ?></option>
+                    <?php } ?>
+                </select>
             </div>
             <div class="field error">
                 <label>tax_rate</label>
-                <input type="text" name="tax_rate" required>
+                <input type="number" name="tax_rate" required>
             </div>
         </div>
         <div class="two fields">
             <div class="field error">
                 <label>elec_rate</label>
-                <input type="text" name="elec_rate" required>
+                <input type="number" name="elec_rate" required>
             </div>
             <div class="field error">
                 <label>water_rate</label>
-                <input type="text" name="water_rate" required>
+                <input type="number" name="water_rate" required>
             </div>
         </div>
         <div class="two fields">

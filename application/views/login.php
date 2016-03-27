@@ -1,10 +1,10 @@
-<div class="ui middle aligned center aligned grid">
-    <div class="column">
-        <h2 class="ui teal image header">
-            <div class="content">
-                Log-in to your account
-            </div>
-        </h2>
+<div class="ui centered card">
+    <div class="content center aligned">
+        <div class="header">
+        Log-in to your account
+    </div>
+    </div>
+    <div class="content">
         <form class="ui large form">
             <div class="ui stacked segment">
                 <div class="field">
@@ -23,9 +23,6 @@
             </div>
             <div class="ui error message"></div>
         </form>
-        <div class="ui message">
-            New to us? <a href="#">Sign Up</a>
-        </div>
     </div>
 </div>
 <script type="text/javascript">

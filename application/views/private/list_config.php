@@ -12,13 +12,13 @@
         <table class="ui sortable celled table unstackable striped teal inverted">
             <thead>
                 <tr>
-                    <th>code_id</th>
-                    <th>name_th</th>
-                    <th>addr_th</th>
-                    <th>phone</th>
-                    <th>email</th>
-                    <th>contact</th>
-                    <th>join_date</th>
+                    <th>no</th>
+                    <th>horpak_id</th>
+                    <th>tax_rate</th>
+                    <th>elec_rate</th>
+                    <th>water_rate</th>
+                    <th>last_update</th>
+                    <th>update_by</th>
                     <th>#</th>
                     <th>#</th>
                 </tr>
@@ -26,7 +26,7 @@
             <tbody>
                 <?php foreach ($configs as $key => $data) { ?>
                     <tr>
-                        <td><?= $data['code_id'] ?></td>
+                        <td><?= ($key+1) ?></td>
                         <td><?= $data['horpak_id'] ?></td>
                         <td><?= $data['tax_rate'] ?></td>
                         <td><?= $data['elec_rate'] ?></td>

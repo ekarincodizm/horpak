@@ -22,8 +22,11 @@
         <script type="text/javascript" src="<?php echo base_url() . "js/datatables/dataTables.semanticui.min.js" ?>"></script>
         <!-- Datatable-->
 
+<!--        <script type="text/javascript" src="<?php echo base_url() . 'js/validate-form.js' ?>"></script>-->
+        
         <script type="text/javascript" src="<?php echo base_url() . 'plugins/jquery-confirm/js/jquery-confirm.js' ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url() . 'js/custom/dropdown.custom.js' ?>"></script>           
+        <script type="text/javascript" src="<?php echo base_url() . 'js/custom/dropdown.custom.js' ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url() . 'js/custom/modal.custom.js' ?>"></script>
         <script type="text/javascript" src="<?php echo base_url() . 'js/custom/horpak.custom.js' ?>"></script>           
         <style type="text/css">
             body *{
@@ -38,8 +41,8 @@
                     <div class="item">
                         <i class="fa fa-building fa-2x"></i>
                     </div>
-                    <a href="<?= site_url('horpak/index') ?>" class="brand item">จัดการห้องพัก</a>
-                    <div class="ui dropdown item">
+                    <a href="<?= site_url('horpak/index') ?>" class="brand item">หอพักออนไลน์</a>
+<!--                    <div class="ui dropdown item">
                         <i class="large protect icon"></i> จัดารข้อมูลฟิ้นฐาน <i class="dropdown icon"></i>
                         <div class="menu">
                             <a class="item" href="<?= site_url('mconfig/index') ?>"><i class="fa fa-cog"></i> ตั้งค่าระบบหอพัก</a>
@@ -49,7 +52,14 @@
                             <a class="item" href="<?= site_url('mservice/index') ?>"><i class="fa fa-truck"></i> จัดการการบริการ</a>
                         </div>
                     </div>
+                    <div class="ui dropdown item">
+                        <i class="large protect icon"></i> จัดารข้อมูลหอพัก <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a class="item" href="<?= site_url('horpak/horpaks') ?>"><i class="fa fa-cog"></i> ข้อมูลหอพัก</a>
+                        </div>
+                    </div>-->
                     <div class="right menu">
+                        <a href="<?= site_url('horpak/register') ?>" class="brand item"><i class="fa fa-registered"></i> ลงทะเบียนหอพัก</a>
                         <a href="" class="item">
                             <i class="fa fa-user"> </i> 
                             ข้อมูลผู้ใช้งาน

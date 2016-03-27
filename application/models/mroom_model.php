@@ -29,7 +29,12 @@ class MRoom_model extends CI_Model {
     }
 
     public function getDataAll() {
-        $query = $this->db->get('m_room');
+        $query = $this->db
+                ->select('*')
+                ->from('m_room')
+                //->join('m_label', 'm_label.code_id = m_room.room_status', 'left')
+                //->join('p_horpak', 'p_horpak.code_id = m_room.horpak_id', 'left')
+                ->get();
         return $query->result_array();
     }
 

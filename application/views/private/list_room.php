@@ -25,7 +25,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($labels as $key => $data) { ?>
+                <?php foreach ($rooms as $key => $data) { ?>
                     <tr>
                         <td><?= ($key + 1) ?></td>
                         <td><?= $data['horpak_id'] ?></td>

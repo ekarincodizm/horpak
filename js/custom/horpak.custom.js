@@ -7,19 +7,15 @@
  * Global Varliable
  */
 var FormValidate = {};
-var TransitionMotion = [
-    'slide up', 'slide down', 'scale', 'fade down',
-    'fade up', 'fade', 'vertical flip', 'horizontal flip',
-    'bounce', 'tada', 'pulse', 'flash', 'shake']
+
 var FormSeletor = '.ui.form.horpak';
 
 $(document).ready(function () {
-    customNavbarMenu();
     customDatatable();
     customValidation();
     crud();
-
     //customAjaxProcess();
+    $('.fa.button').popup({});
 });
 
 /*
@@ -73,23 +69,6 @@ function reDesignElement() {
 
 function customDatatable() {
     $('.table').DataTable();
-}
-
-function customNavbarMenu() {
-    /*$(document).on("click", '.right.menu.open', function (e) {
-     e.preventDefault();
-     $(this).addClass('close').removeClass('open');
-     $('.ui.vertical.navbar.menu').css('display', 'inline');
-     }).on("click", '.right.menu.close', function (e) {
-     e.preventDefault();
-     $(this).addClass('open').removeClass('close');
-     $('.ui.vertical.navbar.menu').css('display', 'none');
-     });*/
-    $(document).on("click", '.left.menu.open', function (e) {
-        e.preventDefault();
-        $('.left.demo.sidebar').sidebar('toggle');
-    });
-    $('.ui.dropdown').dropdown();
 }
 
 function customValidation() {
@@ -171,7 +150,7 @@ function crud() {
                 $.get(url, {id: id}, function (resp) {
                     $.each(resp, function (key, value) {
                         $('.ui.form.horpak').find("input[name='" + key + "']").val(value);
-                        $('.ui.form.horpak').find("select[name='" + key + "']").val(value);
+                        $('.ui.form.horpak').find("select[name='" + key + "']").dropdown("set selected", value);
                         $('.ui.form.horpak').find("textarea[name='" + key + "']").val(value);
                         var checkbox = $('.ui.form.horpak').find('input[type="checkbox"][name="' + key + '"]');
                         if ($(checkbox).val() == value) {
@@ -186,14 +165,14 @@ function crud() {
             } else {
                 //alert('แน่ใจว่าใส่  attribute data-id คือ id ที่จะลบ ใน ปุ่มคลิกลบแล้วใช่ไหม');
                 $('.ui.form.horpak').find("input,textarea").val("");
-                $('.ui.form.horpak').find("select").val("");
+                $('.ui.form.horpak').find("select").dropdown("refresh").dropdown("set selected", "");
                 $('.ui.form.horpak').find('input[type="checkbox"]').attr('checked', false);
                 $('.ui.form.horpak').find('input[type="radio"]').attr('checked', true);
             }
             resetFormBlank(FormSeletor);
         }
 
-        $('.ui.modal').modal({closable: false}).modal('setting', 'transition', TransitionMotion[1]).modal('show');
+        modalForm();
     }).on('click', '.btn-delete', function () {
         var element = this;
         var restUrlDelete = $(element).attr('data-url');
@@ -274,4 +253,5 @@ function customAjaxProcess() {
         $(htmlLoading).hide();
     });
 }
+
 

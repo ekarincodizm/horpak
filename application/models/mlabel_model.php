@@ -30,6 +30,15 @@ class MLabel_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function getDataAllByGroup($group) {
+        $query = $this->db
+                ->select('*')
+                ->from('m_label')
+                ->where('c_group', $group)
+                ->get();
+        return $query->result_array();
+    }
+
     public function setData($data) {
         $this->code_id = $data['code_id'];
         $this->array_label = array(

@@ -18,7 +18,17 @@ class MRoom extends CI_Controller {
 
     public function index() {
         $this->load->model('mroom_model');
-        $data['labels'] = $this->mroom_model->getDataAll();
+        $data['rooms'] = $this->mroom_model->getDataAll();
+        
+        $this->load->model('phorpak_model');
+        $data['horpaks'] = $this->phorpak_model->getDataAll();
+        
+        $this->load->model('mroomtype_model');
+        $data['roomtypes'] = $this->mroomtype_model->getDataAll();
+        
+        $this->load->model('mlabel_model');
+        $data['labels'] = $this->mlabel_model->getDataAllByGroup('ROOM_STATUS');
+        
         $this->load->view('/include/layout_header');
         $this->load->view('/private/list_room', $data);
         $this->load->view('/include/layout_footer');

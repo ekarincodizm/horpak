@@ -26,11 +26,11 @@
                 <?php foreach ($services as $key => $data) { ?>
                     <tr>
                         <td><?= ($key + 1) ?></td>
-                        <td><?= $data['horpak_id'] ?></td>
+                        <td><?= $data['name_th'] ?></td>
                         <td><?= $data['service_name'] ?></td>
                         <td><?= $data['sercice_desc'] ?></td>
                         <td><?= $data['price'] ?></td>
-                        <td><?= $data['service_status'] ?></td>
+                        <td><?= $data['c_label'] ?></td>
                         <td class="center aligned">
                             <a class="ui small  labeled icon green button btn-form" data-id="<?= $data['code_id'] ?>">
                                 <i class="pencil icon"></i> แก้ไข

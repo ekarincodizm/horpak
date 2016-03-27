@@ -10,11 +10,21 @@
             <div class="field error">
                 <label>horpak_id</label>
                 <input type="hidden" name="code_id">
-                <input type="text" name="horpak_id" required>
+                <select class="ui dropdown" name="horpak_id" required>
+                    <option value="">--เลือก--</option>
+                    <?php foreach ($horpaks as $index => $horpak) { ?>
+                        <option value="<?= $horpak['code_id'] ?>"><?= $horpak['name_th'] ?></option>
+                    <?php } ?>
+                </select>
             </div>
             <div class="field error">
                 <label>type_id</label>
-                <input type="text" name="type_id" required>
+                <select class="ui dropdown horpak" name="type_id" required>
+                    <option value="">--เลือก--</option>
+                    <?php foreach ($roomtypes as $index => $roomtype) { ?>
+                        <option value="<?= $roomtype['code_id'] ?>"><?= $roomtype['type_name'] ?></option>
+                    <?php } ?>
+                </select>
             </div>
         </div>
         <div class="two fields">
@@ -34,7 +44,12 @@
             </div>
             <div class="field error">
                 <label>room_status</label>
-                <input type="number" name="room_status" required>
+                <select class="ui dropdown horpak" name="room_status" required>
+                    <option value="">--เลือก--</option>
+                    <?php foreach ($labels as $index => $label) { ?>
+                        <option value="<?= $label['code_id'] ?>"><?= $label['c_label'] ?></option>
+                    <?php } ?>
+                </select>
             </div>
         </div>
         <div class="field">
