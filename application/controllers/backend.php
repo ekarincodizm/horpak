@@ -86,22 +86,7 @@ class Backend extends CI_Controller {
 
 
 
-    /*
-     * Config Crud
-     */
-
-    public function config() {
-        $this->load->model('config_model');
-        $data['configs'] = $this->config_model->getDataAll();
-        $this->load->view('/include/layout_header');
-        $this->load->view('/private/list_config', $data);
-        $this->load->view('/include/layout_footer');
-    }
-
-
-    /*
-     * Config Crud
-     */
+   
 
 
     /*

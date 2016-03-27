@@ -14,9 +14,12 @@ var TransitionMotion = [
 var FormSeletor = '.ui.form.horpak';
 
 $(document).ready(function () {
+    customNavbarMenu();
     customDatatable();
     customValidation();
     crud();
+
+    //customAjaxProcess();
 });
 
 /*
@@ -65,15 +68,28 @@ $.validator.setDefaults({
  */
 
 function reDesignElement() {
-//    $('.jconfirm-box').parent().prepend($('<div class="six wide column"></div>'));
-//    $('.jconfirm-box').parent().addClass('grid').addClass('ui');
-//    $('.jconfirm-box').addClass('four').addClass('wide').addClass('column');
-//jconfirm-box-container ui small modal transition visible
-    //$('.jconfirm-box-container').addClass('small').addClass('modal').addClass('transition').addClass('visible');
+    //$('.jconfirm-box-container').addClass('center').addClass('aligned'); //.addClass('container')
 }
 
 function customDatatable() {
     $('.table').DataTable();
+}
+
+function customNavbarMenu() {
+    /*$(document).on("click", '.right.menu.open', function (e) {
+     e.preventDefault();
+     $(this).addClass('close').removeClass('open');
+     $('.ui.vertical.navbar.menu').css('display', 'inline');
+     }).on("click", '.right.menu.close', function (e) {
+     e.preventDefault();
+     $(this).addClass('open').removeClass('close');
+     $('.ui.vertical.navbar.menu').css('display', 'none');
+     });*/
+    $(document).on("click", '.left.menu.open', function (e) {
+        e.preventDefault();
+        $('.left.demo.sidebar').sidebar('toggle');
+    });
+    $('.ui.dropdown').dropdown();
 }
 
 function customValidation() {
@@ -88,7 +104,7 @@ function customValidation() {
                 cancelButton: 'ไม่ใช่ ยกเลิก',
                 confirmButtonClass: 'ui button green',
                 cancelButtonClass: 'ui button red',
-                columnClass: 'ui grid',
+                columnClass: 'ui grid center aligned',
                 closeIcon: true,
                 closeIconClass: 'fa fa-close', // or 'glyphicon glyphicon-remove'
                 confirm: function () {
@@ -115,26 +131,29 @@ function customValidation() {
 }
 
 function toastMessageError(resp) {
-    console.log(resp);
     $.alert({
+        icon: 'fa fa-remove',
         title: resp.title,
         content: resp.message,
         confirmButton: 'ปิด',
         confirmButtonClass: 'ui button orange',
         confirmIcon: true,
         confirmIconClass: 'fa fa-ok',
+        columnClass: 'ui container left aligned',
     });
     reDesignElement();
 }
 
 function toastMessageInfo(resp) {
     $.alert({
+        icon: 'fa fa-info',
         title: resp.title,
         content: resp.message,
         confirmButton: 'ตกลง',
         confirmButtonClass: 'ui button blue',
         confirmIcon: true,
         confirmIconClass: 'fa fa-ok',
+        columnClass: 'ui container left aligned',
     });
     reDesignElement();
 }
@@ -153,6 +172,7 @@ function crud() {
                     $.each(resp, function (key, value) {
                         $('.ui.form.horpak').find("input[name='" + key + "']").val(value);
                         $('.ui.form.horpak').find("select[name='" + key + "']").val(value);
+                        $('.ui.form.horpak').find("textarea[name='" + key + "']").val(value);
                         var checkbox = $('.ui.form.horpak').find('input[type="checkbox"][name="' + key + '"]');
                         if ($(checkbox).val() == value) {
                             $(checkbox).attr('checked', true);
@@ -165,7 +185,7 @@ function crud() {
                 }, 'json');
             } else {
                 //alert('แน่ใจว่าใส่  attribute data-id คือ id ที่จะลบ ใน ปุ่มคลิกลบแล้วใช่ไหม');
-                $('.ui.form.horpak').find("input[type=text], textarea").val("");
+                $('.ui.form.horpak').find("input,textarea").val("");
                 $('.ui.form.horpak').find("select").val("");
                 $('.ui.form.horpak').find('input[type="checkbox"]').attr('checked', false);
                 $('.ui.form.horpak').find('input[type="radio"]').attr('checked', true);
@@ -189,7 +209,7 @@ function crud() {
             cancelButton: 'ไม่ใช่ ฉันกดผิด',
             confirmButtonClass: 'ui button green',
             cancelButtonClass: 'ui button red',
-            columnClass: 'ui grid',
+            columnClass: 'ui grid center aligned',
             closeIcon: true,
             closeIconClass: 'fa fa-close', // or 'glyphicon glyphicon-remove'
             confirm: function () {
@@ -206,7 +226,8 @@ function crud() {
                         }
                     },
                     error: function (err, xhrr, http) {
-                        toastMessageError({title: 'Application Error', message: err.responseText});
+                        console.log(err);
+                        toastMessageError({title: 'StatusCode : ' + err.status + ' ' + err.statusText, message: err.responseText});
                     }
                 });
             },
@@ -234,5 +255,23 @@ function resetFormBlank(FormSeletor) {
         });
     }, 200);
     FormValidate.resetForm();
+}
+
+function customAjaxProcess() {
+    var htmlLoading = '<div class="ui segment">';
+    htmlLoading += '  <div class="ui active inverted dimmer">';
+    htmlLoading += '  <div class="ui large text loader">Loading</div>';
+    htmlLoading += '  </div>';
+    htmlLoading += '  <p></p>';
+    htmlLoading += '  <p></p>';
+    htmlLoading += '  <p></p>';
+    htmlLoading += '  </div>';
+    $(document).append(htmlLoading);
+    $(document).ajaxStart(function () {
+        $(htmlLoading).show();
+    });
+    $(document).ajaxStop(function () {
+        $(htmlLoading).hide();
+    });
 }
 

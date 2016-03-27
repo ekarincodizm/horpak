@@ -1,30 +1,32 @@
-<form class="ui form horpak segment error validate modal" id="form-label"
-      data-url="<?= site_url('mlabel/getlabel') ?>"
-      action="<?= site_url('mlabel/savelabel') ?>" method="post">        
+<form class="ui form horpak segment error validate modal" id="form-roomtype"
+      data-url="<?= site_url('mroomtype/getroomtype') ?>"
+      action="<?= site_url('mroomtype/saveroomtype') ?>" method="post">       
     <i class="close icon"></i>
     <div class="header">
-        <h2>ป้ายชื่อ</h2>
+        <h2>ประเภทห้องพัก</h2>
     </div>
     <div class="content">
         <div class="two fields">
             <div class="field error">
-                <label>c_group</label>
+                <label>horpak_id</label>
                 <input type="hidden" name="code_id">
-                <input type="text" name="c_group" required>
+                <input type="text" name="horpak_id" required>
             </div>
             <div class="field error">
-                <label>c_label_th</label>
-                <input type="text" name="c_label" required>
+                <label>type_name</label>
+                <input type="text" name="type_name" required>
             </div>
         </div>
         <div class="two fields">
             <div class="field error">
-                <label>c_value</label>
-                <input type="number" name="c_value" required>
+                <label>std_price</label>
+                <input type="text" name="std_price" required>
             </div>
+        </div>
+        <div class="field">
             <div class="field error">
-                <label>order_by</label>
-                <input type="number" name="order_by" required>
+                <label>type_desc</label>
+                <textarea name="type_desc"></textarea>
             </div>
         </div>
     </div>

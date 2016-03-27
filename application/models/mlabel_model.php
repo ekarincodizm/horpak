@@ -6,9 +6,10 @@
  * and open the template in the editor.
  */
 
-class Label_model extends CI_Model {
+class MLabel_model extends CI_Model {
 
     var $array_label = array();
+    var $code_id = '';
     var $c_group = '';
     var $c_label = '';
     var $c_value = '';
@@ -19,7 +20,7 @@ class Label_model extends CI_Model {
     }
 
     public function getDataSingle($id) {
-        $this->db->from('m_label')->where('c_group', $id);
+        $this->db->from('m_label')->where('code_id', $id);
         $query = $this->db->get();
         return $query->row();
     }
@@ -30,9 +31,8 @@ class Label_model extends CI_Model {
     }
 
     public function setData($data) {
-        $this->c_group = $data['c_group'];
+        $this->code_id = $data['code_id'];
         $this->array_label = array(
-            //'c_group' => $data['code'],
             'c_group' => $data['c_group'],
             'c_label' => $data['c_label'],
             'c_value' => $data['c_value'],
@@ -45,7 +45,7 @@ class Label_model extends CI_Model {
     }
 
     public function deleteData($id) {
-        $this->db->where('c_group', $id);
+        $this->db->where('code_id', $id);
         return $this->db->delete('m_label');
     }
 
@@ -54,7 +54,7 @@ class Label_model extends CI_Model {
     }
 
     public function updateData() {
-        $this->db->where('c_group', $this->c_group);
+        $this->db->where('code_id', $this->code_id);
         return $this->db->update('m_label', $this->array_label);
     }
 

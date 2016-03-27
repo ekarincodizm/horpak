@@ -8,7 +8,7 @@
     </div>
     <?php $this->load->view('/private/modal_horpak'); ?>
     <div class="sixteen wide column">
-        <table class="ui sortable celled table">
+        <table class="ui sortable celled table unstackable striped teal inverted">
             <thead>
                 <tr>
                     <th>code_id</th>
@@ -32,14 +32,14 @@
                         <td><?= $data['email'] ?></td>
                         <td><?= $data['contact'] ?></td>
                         <td><?= $data['join_date'] ?></td>
-                        <td>
+                        <td class="center aligned">
                             <a href="#modalHorpak" 
                                class="btn light-blue lighten-2 btnModalHorpakEdit"
                                data-id="<?= $data['code_id'] ?>">
                                 แก้ไขข้อมูล
                             </a>
                         </td>
-                        <td>
+                        <td class="center aligned">
                             <button class="btn confirm red accent-2"
                                     data-id="<?= $data['code_id'] ?>"
                                     data-url="<?= site_url('backendjson/deletehorpak') ?>"

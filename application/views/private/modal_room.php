@@ -1,9 +1,9 @@
-<form class="ui form horpak segment error validate modal" id="form-config"
-      data-url="<?= site_url('mconfig/getconfig') ?>"
-      action="<?= site_url('mconfig/saveconfig') ?>" method="post">        
+<form class="ui form horpak segment error validate modal" id="form-room"
+      data-url="<?= site_url('mroom/getroom') ?>"
+      action="<?= site_url('mroom/saveroom') ?>" method="post">        
     <i class="close icon"></i>
     <div class="header">
-        <h2>ตั้งค่าหอพัก</h2>            
+        <h2>ห้องพัก</h2>
     </div>
     <div class="content">
         <div class="two fields">
@@ -13,28 +13,34 @@
                 <input type="text" name="horpak_id" required>
             </div>
             <div class="field error">
-                <label>tax_rate</label>
-                <input type="text" name="tax_rate" required>
+                <label>type_id</label>
+                <input type="text" name="type_id" required>
             </div>
         </div>
         <div class="two fields">
             <div class="field error">
-                <label>elec_rate</label>
-                <input type="text" name="elec_rate" required>
+                <label>room_no</label>
+                <input type="number" name="room_no" required>
             </div>
             <div class="field error">
-                <label>water_rate</label>
-                <input type="text" name="water_rate" required>
+                <label>floor</label>
+                <input type="number" name="floor" required>
             </div>
         </div>
         <div class="two fields">
             <div class="field error">
-                <label>last_update</label>
-                <input type="text" name="last_update" required>
+                <label>price</label>
+                <input type="number" name="price" required>
             </div>
             <div class="field error">
-                <label>update_by</label>
-                <input type="text" name="update_by" required>
+                <label>room_status</label>
+                <input type="number" name="room_status" required>
+            </div>
+        </div>
+        <div class="field">
+            <div class="field error">
+                <label>room_desc</label>
+                <textarea name="room_desc"></textarea>
             </div>
         </div>
     </div>

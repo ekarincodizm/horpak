@@ -34,60 +34,72 @@
     <body>
         <div class="ui grid">
             <div class="computer tablet only row">
-                <div class="ui inverted blue fixed menu navbar page grid">
-                    <a href="" class="brand item"><i class="fa fa-building fa-2x"></i> Horpak</a>
-                    <a class="item" href="<?= site_url('horpak/index') ?>">
-                        <i class="fa fa-home fa-2x"></i> Home
-                    </a>
-                    <a href="" class="item">About</a>
-                    <a href="" class="item">Contact</a>
-                    <a class="ui dropdown item">Dropdown
-                        <i class="dropdown icon"></i>
+                <div class="ui inverted fixed menu navbar page grid blue stackable">
+                    <div class="item">
+                        <i class="fa fa-building fa-2x"></i>
+                    </div>
+                    <a href="<?= site_url('horpak/index') ?>" class="brand item">จัดการห้องพัก</a>
+                    <div class="ui dropdown item">
+                        <i class="large protect icon"></i> จัดารข้อมูลฟิ้นฐาน <i class="dropdown icon"></i>
                         <div class="menu">
-                            <div class="item">Action</div>
-                            <div class="item">Another action</div>
-                            <div class="item">Something else here</div>
-                            <div class="ui divider"></div>
-                            <div class="item">Seperated link</div>
-                            <div class="item">One more seperated link</div>
+                            <a class="item" href="<?= site_url('mconfig/index') ?>"><i class="fa fa-cog"></i> ตั้งค่าระบบหอพัก</a>
+                            <a class="item" href="<?= site_url('mlabel/index') ?>"><i class="fa fa-book"></i> จัดการป้ายชื่อ</a>
+                            <a class="item" href="<?= site_url('mroom/index') ?>"><i class="fa fa-cutlery"></i> จัดการห้องพัก</a>
+                            <a class="item" href="<?= site_url('mroomtype/index') ?>"><i class="fa fa-reorder"></i> จัดการประเภทห้องพัก</a>
+                            <a class="item" href="<?= site_url('mservice/index') ?>"><i class="fa fa-truck"></i> จัดการการบริการ</a>
                         </div>
-                    </a>
+                    </div>
                     <div class="right menu">
-                        <a href="" class="item">Fixed top</a>
+                        <a href="" class="item">
+                            <i class="fa fa-user"> </i> 
+                            ข้อมูลผู้ใช้งาน
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="mobile only row">
-                <div class="ui fixed inverted navbar menu">
-                    <a href="" class="brand item">Project Name</a>
-                    <div class="right menu open">
+                <div class="ui fixed inverted navbar menu blue">
+                    <div class="left menu open">
                         <a href="" class="menu item">
                             <i class="content icon"></i>
                         </a>
                     </div>
+                    <a href="" class="brand item">จัดการห้องพัก</a>
                 </div>
-                <div class="ui vertical navbar menu">
-                    <a href="" class="active item">Home</a>
-                    <a href="" class="item">About</a>
-                    <a href="" class="item">Contact</a>
-                    <div class="ui item">
-                        <div class="text">Dropdown</div>
-                        <div class="menu">
-                            <a class="item">Action</a>
-                            <a class="item">Another action</a>
-                            <a class="item">Something else here</a>
-                            <a class="ui aider"></a>
-                            <a class="item">Seperated link</a>
-                            <a class="item">One more seperated link</a>
-                        </div>
-                    </div>
-                    <div class="menu">
-                        <a href="" class="active item">Default</a>
-                        <a href="" class="item">Static top</a>
-                        <a href="" class="item">Fixed top</a>
-                    </div>
-                </div>
+                <!--                <div class="ui vertical navbar menu">
+                                    <a href="" class="active item">Home</a>
+                                    <a href="<?= site_url('horpak/index') ?>" class="brand item">จัดการห้องพัก</a>
+                                    <div class="ui dropdown item">
+                                        <i class="large protect icon"></i> จัดารข้อมูลฟิ้นฐาน <i class="dropdown icon"></i>
+                                        <div class="menu">
+                                            <a class="item" href="<?= site_url('mconfig/index') ?>"><i class="fa fa-cog"></i> ตั้งค่าระบบหอพัก</a>
+                                            <a class="item" href="<?= site_url('mlabel/index') ?>"><i class="fa fa-book"></i> จัดการป้ายชื่อ</a>
+                                            <a class="item" href="<?= site_url('mroom/index') ?>"><i class="fa fa-cutlery"></i> จัดการห้องพัก</a>
+                                            <a class="item" href="<?= site_url('mroomtype/index') ?>"><i class="fa fa-reorder"></i> จัดการประเภทห้องพัก</a>
+                                            <a class="item" href="<?= site_url('mservice/index') ?>"><i class="fa fa-truck"></i> จัดการการบริการ</a>
+                                        </div>
+                                    </div>
+                                    <div class="menu">
+                                        <a href="" class="active item">Default</a>
+                                        <a href="" class="item">Static top</a>
+                                        <a href="" class="item">Fixed top</a>
+                                    </div>
+                                </div>-->                
             </div>
         </div>
+        <div class="ui left demo vertical inverted sidebar labeled icon menu">
+            <a class="item">
+                <i class="home icon"></i>
+                Home
+            </a>
+            <a class="item">
+                <i class="block layout icon"></i>
+                Topics
+            </a>
+            <a class="item">
+                <i class="smile icon"></i>
+                Friends
+            </a>
+        </div>
 
-        <div class="ui  container" style="margin-top: 60px;">
+        <div class="ui  container pusher" style="margin-top: 60px;">
