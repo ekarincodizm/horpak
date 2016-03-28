@@ -14,6 +14,7 @@ $(document).ready(function () {
     customDatatable();
     customValidation();
     crud();
+    customSteps();
     //customAjaxProcess();
     $('.fa.button').popup({});
 });
@@ -68,7 +69,7 @@ function reDesignElement() {
 }
 
 function customDatatable() {
-    $('.table').DataTable();
+    //$('.table').DataTable();
 }
 
 function customValidation() {
@@ -95,7 +96,9 @@ function customValidation() {
                         success: function (resp) {
                             console.log(resp);
                             if (resp.status) {
-                                window.location.href = resp.url;
+                                formMessageInfo(resp);
+                            } else {
+                                formMessageError(resp);
                             }
                         },
                         error: function (err, xhrr, http) {
@@ -108,6 +111,44 @@ function customValidation() {
         }
     });
 }
+
+
+function formMessageError(resp) {
+    $.alert({
+        icon: 'fa fa-remove',
+        title: resp.title,
+        content: resp.message,
+        confirmButton: 'ปิด',
+        confirmButtonClass: 'ui button orange',
+        confirmIcon: true,
+        confirmIconClass: 'fa fa-ok',
+        columnClass: 'ui grid center aligned',
+        confirm: function () {
+            $("input[name='user_name']").parent().addClass("error");
+
+        }
+    });
+
+    reDesignElement();
+}
+
+function formMessageInfo(resp) {
+    $.alert({
+        icon: 'fa fa-info',
+        title: resp.title,
+        content: resp.message,
+        confirmButton: 'ตกลง',
+        confirmButtonClass: 'ui button blue',
+        confirmIcon: true,
+        confirmIconClass: 'fa fa-ok',
+        columnClass: 'ui grid center aligned',
+        confirm: function () {
+            window.location.href = resp.url;
+        }
+    });
+    reDesignElement();
+}
+
 
 function toastMessageError(resp) {
     $.alert({
@@ -253,5 +294,19 @@ function customAjaxProcess() {
         $(htmlLoading).hide();
     });
 }
+function customSteps() {
+    $('.steps').on('click', '.step', function (e) {
+        var index = $(this).index();
+        console.log('index ::==' + index);
+        
+        var steps = $('.steps').children();
+        $(this).prevAll().addClass('completed').removeClass('active');
+        $(this).nextAll().removeClass('completed').removeClass('active');
+        $(this).removeClass('completed').addClass('active');
 
+        //$('.steps').children().not(this).removeClass('active'); //completed
+        $('.blocks').find('.block').eq(index).show();
+        $('.blocks').find('.block').not($('.blocks').find('.block').eq(index)).hide();
+    });
+}
 

@@ -5,7 +5,7 @@
     </div>
     </div>
     <div class="content">
-        <form class="ui large form">
+        <form class="ui large form" >
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="ui left icon input">

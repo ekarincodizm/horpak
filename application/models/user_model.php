@@ -29,8 +29,8 @@ class User_model extends CI_Model {
         $this->db->from('p_user')
                 ->where('user_name', $user['user_name'])
                 ->where('user_pass', $user['user_pass']);
-        $this->user = $this->db->get()->row();
-        return $this->user;
+        $userData = $this->db->get()->row();
+        return $userData;
     }
 
     public function getDataSingle($id) {
@@ -44,16 +44,16 @@ class User_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function setData($data) {
-        $this->code_id = $data['code_id'];
+    public function setDataRegister($data,$horpak_id) {
+        $this->code_id = 0;
         $this->array_user = array(
-            //'code_id' => $data['code'],
-            'horpak_id' => $data['horpak_id'],
-            'tax_rate' => $data['tax_rate'],
-            'elec_rate' => $data['elec_rate'],
-            'water_rate' => $data['water_rate'],
-            'last_update' => $data['last_update'],
-            'update_by' => $data['update_by']
+            'horpak_id' => $horpak_id,
+            'user_name' => $data['user_name'],
+            'user_pass' => $data['user_pass'],
+            'join_date' => date('Y-m-d'),
+            'user_status' => '1',
+            'user_level' => 'N',
+            'user_type' => 'H'
         );
     }
 
@@ -74,5 +74,12 @@ class User_model extends CI_Model {
         $this->db->where('code_id', $this->code_id);
         return $this->db->update('p_user', $this->array_user);
     }
-
+	public function chk_username($user_name){
+		$query = $this->db->query("SELECT * FROM p_user where user_name='$user_name'");
+        if ($query->num_rows() > 0){
+        	return "dup";
+        }else{
+        	return "ok";
+        }	 		
+	}
 }

@@ -8,8 +8,8 @@ class CoreHelper {
     public function getFeaturesMain() {
         return array(
             array('alias' => 'core', 'name_th' => 'ข้อมูลหลัก', 'name_en' => '', 'href' => 'horpak/subMenu/core', 'icon' => 'fa-home', 'color' => 'orange'),
-            array('alias' => 'in', 'name_th' => 'แจ้งเข้า', 'name_en' => '', 'href' => 'troomopen/index', 'icon' => 'fa-sign-in', 'color' => 'red'),
-            array('alias' => 'out', 'name_th' => 'แจ้งออก', 'name_en' => '', 'href' => '', 'icon' => 'fa-sign-out', 'color' => 'yellow'),
+            array('alias' => 'in', 'name_th' => 'แจ้งเข้า', 'name_en' => '', 'href' => 'troomopen/checkin', 'icon' => 'fa-sign-in', 'color' => 'red'),
+            array('alias' => 'out', 'name_th' => 'แจ้งออก', 'name_en' => '', 'href' => 'troomopen/checkout', 'icon' => 'fa-sign-out', 'color' => 'yellow'),
             array('alias' => 'electricity_meter', 'name_th' => 'มิเตอร์ไฟ', 'name_en' => '', 'href' => '', 'icon' => 'fa-lightbulb-o', 'color' => 'olive'),
             array('alias' => 'water_meter', 'name_th' => 'มิเตอร์น้ำ', 'name_en' => '', 'href' => '', 'icon' => 'fa-tint', 'color' => 'green'),
             array('alias' => 'service', 'name_th' => 'บริการเสริม', 'name_en' => '', 'href' => '', 'icon' => 'fa-wifi', 'color' => 'teal'),

@@ -51,7 +51,11 @@ class MRoomtype extends CI_Controller {
             } else {
                 $exec = $this->mroomtype_model->updateData();
             }
-            $this->functionhelper->jsonResponseFull($exec, 'เกิดข้อผิดพลาด', 'ไม่สามารถบันทึกข้อมูลได้', site_url('mroomtype/index'));
+            if($exec){
+            	$this->functionhelper->jsonResponseFull(true, 'บันทึกข้อมูลเรียบร้อย', 'บันทึกข้อมูลเรียบร้อย', site_url('mroomtype/index'));
+            }else{
+            	$this->functionhelper->jsonResponseFull(false, 'เกิดข้อผิดพลาด', 'ไม่สามารถบันทึกข้อมูลได้', site_url('mroomtype/index'));
+            }
         }
     }
 

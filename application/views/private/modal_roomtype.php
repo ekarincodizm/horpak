@@ -3,35 +3,26 @@
       action="<?= site_url('mroomtype/saveroomtype') ?>" method="post">       
     <i class="close icon"></i>
     <div class="header">
-        <h2>ประเภทห้องพัก</h2>
+        <h2>แบบฟอร์มจัดการข้อมูล ประเภทห้องพัก</h2>
     </div>
     <div class="content">
         <div class="two fields">
             <div class="field error">
-                <label>horpak_id</label>
-                <input type="hidden" name="code_id">
-                <select class="ui dropdown" name="horpak_id" required>
-                    <option value="">--เลือก--</option>
-                    <?php foreach ($horpaks as $index => $horpak) { ?>
-                        <option value="<?= $horpak['code_id'] ?>"><?= $horpak['name_th'] ?></option>
-                    <?php } ?>
-                </select>
-            </div>
-            <div class="field error">
-                <label>type_name</label>
+            	<input type="hidden" name="code_id">
+                <label>ชื่อประเภท</label>
                 <input type="text" name="type_name" required>
             </div>
         </div>
         <div class="two fields">
             <div class="field error">
-                <label>std_price</label>
+                <label>ราคาตั้งต้น (บาท)</label>
                 <input type="number" name="std_price" required>
             </div>
         </div>
         <div class="field">
             <div class="field error">
-                <label>type_desc</label>
-                <textarea name="type_desc"></textarea>
+                <label>รายละเอียด</label>
+                <textarea name="type_desc" rows="3"></textarea>
             </div>
         </div>
     </div>

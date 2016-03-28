@@ -16,6 +16,7 @@ class MRoomtype_model extends CI_Model {
 
     public function __construct() {
         parent::__construct();
+        $this->load->library('session');
     }
 
     public function getDataSingle($id) {
@@ -28,6 +29,7 @@ class MRoomtype_model extends CI_Model {
         $query = $this->db
                 ->select('*')
                 ->from('m_room_type')
+                ->where('horpak_id',$this->session->userdata('horpak_id'))
                 //->join('p_horpak', 'p_horpak.code_id = m_room_type.horpak_id', 'left')
                 ->get();
         return $query->result_array();
@@ -36,7 +38,7 @@ class MRoomtype_model extends CI_Model {
     public function setData($data) {
         $this->code_id = $data['code_id'];
         $this->array_room_type = array(
-            'horpak_id' => $data['horpak_id'],
+            'horpak_id' => $this->session->userdata('horpak_id'),
             'type_name' => $data['type_name'],
             'type_desc' => $data['type_desc'],
             'std_price' => $data['std_price'],

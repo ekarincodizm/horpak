@@ -18,16 +18,21 @@ class User extends CI_Controller {
     }
 
     public function login() {
-        if (!empty($_POST)) {
+        if (!empty($_POST)) {        	
             $this->functionhelper->jsonHeader();
             $status = true;
             $this->load->model('user_model');
-            $user = $this->user_model->getDataAttributes($_POST);
+            $user = $this->user_model->getDataAttributes($_POST);            
             if (empty($user)) {
                 $status = false;
                 $user = $this->user_model;
             }
-            $this->session->set_userdata(array('user', $user));
+            $this->session->set_userdata('horpak_id', $user->horpak_id);
+            $this->session->set_userdata('user_name', $user->user_name);
+            $this->session->set_userdata('user_id', $user->user_name);
+            $this->session->set_userdata('customer_id', $user->customer_id);
+            $this->session->set_userdata('user_type', $user->user_type);
+            $this->session->set_userdata('user_level', $user->user_level);            
             $this->functionhelper->jsonDataResponseFull(
                     $status, 'สถานะการเข้าใช้งานระบบ', 'ไม่พบข้อมูลผู้ใช้งานในระบบ', site_url('horpak/index'), $user);
         } else {
