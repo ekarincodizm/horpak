@@ -28,6 +28,7 @@ class CoreHelper {
             array('alias' => 'customer', 'name_th' => 'ประวัติลูกค้า', 'name_en' => '', 'href' => '', 'icon' => 'fa-users', 'color' => 'teal'),
             array('alias' => 'setting', 'name_th' => 'ตั้งค่า', 'name_en' => '', 'href' => 'mconfig/index', 'icon' => 'fa-cog', 'color' => 'green'),
             array('alias' => 'label', 'name_th' => 'สถานะห้องพัก', 'name_en' => '', 'href' => 'mlabel/index', 'icon' => 'fa-bookmark', 'color' => 'red'),
+            array('alias' => 'find', 'name_th' => 'ค่าใช้จ่ายเพิ่มเติม', 'name_en' => '', 'href' => 'mfine/index', 'icon' => 'fa-list', 'color' => 'pink'),
         );
     }
     

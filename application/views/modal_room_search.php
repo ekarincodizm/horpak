@@ -1,7 +1,8 @@
 <div class="ui modal room-search small">
+    <i class="close icon"></i>
     <div class="header"><i class="search icon"></i> ค้นหาข้อมูลห้องพัก</div>
     <div class="content">
-        <table class="ui sortable celled table" id="tblRoom">
+        <table class="ui sortable celled table table-modal" id="tblRoom">
             <thead>
                 <tr>
                     <th>เลือก</th>
@@ -35,14 +36,7 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#tblRoom').DataTable({
-            //"dom": '<"ui grid form"<"row"<"four wide column"f><"eight wide column"><"four wide column"l>>>t<"ui grid"<"eight wide column"i><"right floated eight wide column"p>>',
-            "dom": '<"ui grid form"<"row"<"eight wide column"f><"right aligned eight wide column"l>>t<"eight wide column"i><"right aligned eight wide column"p>>',
-            //"dom" : '<"ui grid "<"eight wide column">>',
-            "bFilter": true,
-            "paging": true,
-            "bLengthChange": true
-        }).on('click', '.button.choose', function () {
+        $('#tblRoom').on('click', '.button.choose', function () {
             $('#lbNo').text('ชื่อห้อง : ' + $(this).attr('data-no'));
             $('#lbFloor').text('ชั้น : ' + $(this).attr('data-floor'));
             $('#lbPrice').text('ราคา : ' + $(this).attr('data-price'));

@@ -9,11 +9,12 @@
 
         <link rel="stylesheet" href="<?php echo base_url() . 'plugins/jquery-confirm/css/jquery-confirm.css' ?>">
         <link rel="stylesheet" href="<?php echo base_url() . 'css/datatables/dataTables.semanticui.min.css' ?>">
+        <link rel="stylesheet" href="<?php echo base_url() . 'plugins/semantic-ui-daterangepicker/daterangepicker.min.css' ?>">
         <link rel="stylesheet" href="<?php echo base_url() . 'css/horpak-style.css' ?>">
 
 
         <script type="text/javascript" src="<?php echo base_url() . "js/jquery-1.11.2.min.js" ?>"></script>           
-        <script type="text/javascript" src="<?php echo base_url() . "semantic/semantic.js" ?>"></script>   
+<!--        <script type="text/javascript" src="<?php echo base_url() . "semantic/semantic.js" ?>"></script>   -->
         <script type="text/javascript" src="<?php echo base_url() . "semantic/semantic.min.js" ?>"></script>   
         <script type="text/javascript" src="<?php echo base_url() . "js/validate/jquery.validate.min.js" ?>"></script>  
 
@@ -21,8 +22,11 @@
         <script type="text/javascript" src="<?php echo base_url() . "js/datatables/jquery.dataTables.min.js" ?>"></script>
         <script type="text/javascript" src="<?php echo base_url() . "js/datatables/dataTables.semanticui.min.js" ?>"></script>
         <!-- Datatable-->
-
-<!--        <script type="text/javascript" src="<?php echo base_url() . 'js/validate-form.js' ?>"></script>-->
+        
+         <!-- DatePicker-->
+         <script type="text/javascript" src="<?php echo base_url() . "plugins/semantic-ui-daterangepicker/moment.min.th.js" ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url() . "plugins/semantic-ui-daterangepicker/daterangepicker.min.js" ?>"></script>
+        <!-- DatePicker-->
         
         <script type="text/javascript" src="<?php echo base_url() . 'plugins/jquery-confirm/js/jquery-confirm.js' ?>"></script>
         <script type="text/javascript" src="<?php echo base_url() . 'js/custom/dropdown.custom.js' ?>"></script>

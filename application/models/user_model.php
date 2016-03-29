@@ -44,7 +44,7 @@ class User_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function setDataRegister($data,$horpak_id) {
+    public function setDataRegister($data, $horpak_id) {
         $this->code_id = 0;
         $this->array_user = array(
             'horpak_id' => $horpak_id,
@@ -74,12 +74,14 @@ class User_model extends CI_Model {
         $this->db->where('code_id', $this->code_id);
         return $this->db->update('p_user', $this->array_user);
     }
-	public function chk_username($user_name){
-		$query = $this->db->query("SELECT * FROM p_user where user_name='$user_name'");
-        if ($query->num_rows() > 0){
-        	return "dup";
-        }else{
-        	return "ok";
-        }	 		
-	}
+
+    public function chk_username($user_name) {
+        $query = $this->db->query("SELECT * FROM p_user where user_name='$user_name'");
+        if ($query->num_rows() > 0) {
+            return "dup";
+        } else {
+            return "ok";
+        }
+    }
+
 }

@@ -34,6 +34,7 @@ class MRoom_model extends CI_Model {
                 ->from('m_room')
                 //->join('m_label', 'm_label.code_id = m_room.room_status', 'left')
                 //->join('p_horpak', 'p_horpak.code_id = m_room.horpak_id', 'left')
+                ->order_by('room_no','asc')
                 ->get();
         return $query->result_array();
     }

@@ -2,7 +2,7 @@
     <i class="close icon"></i>
     <div class="header"><i class="search icon"></i> ค้นหาข้อมูลลูกค้า</div>
     <div class="content">
-        <table class="ui celled table customer" id="tblCustomer">
+        <table class="ui celled table customer table-modal" id="tblCustomer">
             <thead>
                 <tr>
                     <th>เลือก</th>
@@ -18,7 +18,8 @@
                             <a class="ui button green choose" 
                                data-name="<?= $customer['fname'] . '     ' . $customer['lname'] ?>"
                                data-idcard="<?= $customer['id_card'] ?>"
-                               data-address="<?= $customer['addr'] ?>">
+                               data-address="<?= $customer['addr'] ?>"
+                               data-id="<?= $customer['code_id'] ?>">
                                 <i class="plus square outline icon"></i>
                                 เลือก
                             </a>
@@ -37,17 +38,12 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#tblCustomer').DataTable({
-            //"dom": '<"ui grid form"<"row"<"four wide column"f><"eight wide column"><"four wide column"l>>>t<"ui grid"<"eight wide column"i><"right floated eight wide column"p>>',
-            "dom": '<"ui grid form"<"row"<"eight wide column"f><"right aligned eight wide column"l>>t<"eight wide column"i><"right aligned eight wide column"p>>',
-            //"dom" : '<"ui grid "<"eight wide column">>',
-            "bFilter": true,
-            "paging": true,
-            "bLengthChange": true
-        }).on('click', '.button.choose', function () {
+        $('#tblCustomer').on('click', '.button.choose', function () {
+            $('#inputCustomerId').val($(this).attr('data-id'));
             $('#lbName').text('นาย : ' + $(this).attr('data-name'));
             $('#lbIdCard').text('เลขบัตร : ' + $(this).attr('data-idcard'));
             $('#lbAddress').text('ที่อยู่ : ' + $(this).attr('data-address'));
+            $('.step1').attr('disabled', false);
             $('.ui.modal.customer-search').modal('hide');
         });
     });

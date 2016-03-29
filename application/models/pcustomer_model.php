@@ -47,13 +47,13 @@ class PCustomer_model extends CI_Model {
             'id_card' => $data['id_card'],
             'birth_day' => $data['birth_day'],
             'addr' => $data['addr'],
-            'city' => $data['city'],
+            //'city' => $data['city'],
             'state' => $data['state'],
             'province' => $data['province'],
             'zipcode' => $data['zipcode'],
             'email' => $data['email'],
             'mobile' => $data['mobile'],
-            'avatar' => $data['avatar']
+            //'avatar' => $data['avatar']
         );
     }
 

@@ -13,8 +13,10 @@ class TRoomopen_model extends CI_Model {
     var $horpak_id = '';
     var $customer_id = '';
     var $room_id = '';
+    var $rent_type_id = '';
     var $adv_mny = '';
     var $ins_mny = '';
+    var $price = '';
     var $eff_date = '';
     var $end_date = '';
     var $open_status = '';
@@ -43,8 +45,10 @@ class TRoomopen_model extends CI_Model {
             'horpak_id' => $data['horpak_id'],
             'customer_id' => $data['customer_id'],
             'room_id' => $data['room_id'],
+            'rent_type_id' => $data['rent_type_id'],
             'adv_mny' => $data['adv_mny'],
             'ins_mny' => $data['ins_mny'],
+            'price' => $data['price'],
             'eff_date' => $data['eff_date'],
             'end_date' => $data['end_date'],
             'open_status' => $data['open_status'],

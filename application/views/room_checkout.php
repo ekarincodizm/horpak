@@ -44,12 +44,18 @@
             </h2>                
         </div>
         <div class="column">
-            <div class="ui stackable one column grid">
+            <div class="ui stackable two column grid">
+                <input type="hidden" name="customer_id" id="inputCustomerId"/>
                 <div class="column"><h3 id="lbNo">ห้อง</h3></div>
                 <div class="column"><h3 id="lbFloor">ชั้น</h3></div>
                 <div class="column"><h3 id="lbPrice">ราคา</h3></div>
             </div>
         </div>
+        <div class="column">
+            <div class="ui center aligned segment">
+                <button type="button" class="ui button blue small next-step step1"  data-step="1" disabled><i class="arrow right icon"></i> ต่อไป</button>
+            </div>
+        </div>  
     </div>
 
     <!-- Group 2-->
@@ -76,7 +82,7 @@
     <div class="ui stackable one column grid block" style="display: none">            
         <div class="column">
             <h2 class="ui header">
-                
+
             </h2>                
         </div>
         <div class="column">
@@ -127,7 +133,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Group 5-->
     <div class="ui stackable one column grid block" style="display: none">     
         <div class="column">
@@ -143,7 +149,7 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 <script type="text/javascript">
     $(document).ready(function () {

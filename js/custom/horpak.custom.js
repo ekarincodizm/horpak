@@ -69,7 +69,14 @@ function reDesignElement() {
 }
 
 function customDatatable() {
-    //$('.table').DataTable();
+    $('.table-general').DataTable();
+    $('.table-modal').DataTable({
+        //"dom": '<"ui grid form"<"row"<"four wide column"f><"eight wide column"><"four wide column"l>>>t<"ui grid"<"eight wide column"i><"right floated eight wide column"p>>',
+        "dom": '<"ui grid form"<"row"<"eight wide column"f><"right aligned eight wide column"l>>t<"eight wide column"i><"right aligned eight wide column"p>>',
+        "bFilter": true,
+        "paging": true,
+        "bLengthChange": true
+    });
 }
 
 function customValidation() {
@@ -273,7 +280,7 @@ function resetFormBlank(FormSeletor) {
                 $(input).parent().addClass("error");
             }
         });
-    }, 200);
+    }, 500);
     FormValidate.resetForm();
 }
 
@@ -295,18 +302,36 @@ function customAjaxProcess() {
     });
 }
 function customSteps() {
+    var steps = $('.steps').find('.step');
     $('.steps').on('click', '.step', function (e) {
         var index = $(this).index();
-        console.log('index ::==' + index);
-        
-        var steps = $('.steps').children();
-        $(this).prevAll().addClass('completed').removeClass('active');
-        $(this).nextAll().removeClass('completed').removeClass('active');
-        $(this).removeClass('completed').addClass('active');
-
-        //$('.steps').children().not(this).removeClass('active'); //completed
-        $('.blocks').find('.block').eq(index).show();
-        $('.blocks').find('.block').not($('.blocks').find('.block').eq(index)).hide();
+        handleStep(this);
     });
+    $('.blocks').on('click', '.next-step', function () {
+        var index = $(this).attr('data-step');
+        console.log('sext-step index ::==' + index);
+        var stepSelector = $(steps).eq(index);
+        //$(stepSelector).trigger('click');
+        handleStep(stepSelector);
+    }).on('click', '.prev-step', function () {
+        var index = $(this).attr('data-step');
+        console.log('prev-step index ::==' + index);
+        var stepSelector = $(steps).eq(index);
+        console.log('prev-step index ::==' + index);
+        //$(stepSelector).trigger('click');
+        handleStep(stepSelector);
+    });
+}
+
+function handleStep(selector) {
+    var index = $(selector).index();
+    console.log('index ::==' + index);
+    $(selector).prevAll().addClass('completed').removeClass('active');
+    $(selector).nextAll().removeClass('completed').removeClass('active');
+    $(selector).removeClass('completed').addClass('active');
+
+    //$('.steps').children().not(this).removeClass('active'); //completed
+    $('.blocks').find('.block').eq(index).css('display', 'inline');
+    $('.blocks').find('.block').not($('.blocks').find('.block').eq(index)).css('display', 'none');
 }
 
