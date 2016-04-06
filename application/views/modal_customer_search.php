@@ -44,6 +44,7 @@
             $('#lbIdCard').text('เลขบัตร : ' + $(this).attr('data-idcard'));
             $('#lbAddress').text('ที่อยู่ : ' + $(this).attr('data-address'));
             $('.step1').attr('disabled', false);
+            $('.step1').attr('disabled', false);
             $('.ui.modal.customer-search').modal('hide');
         });
     });

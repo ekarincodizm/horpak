@@ -217,7 +217,8 @@
             },
             submitHandler: function (form) {
                 $('.stepBlank').hide();
-                $('.step3').show();
+                //$('.step3').show();
+                $('.step3').trigger('click');
             }
         });
         $('#btnSaveCheckIn').on('click', function () {
@@ -242,9 +243,9 @@
         dataCheckIn.create_date = $('input[name="create_date"]').val();
         $.confirm({
             icon: 'fa fa-warning',
-            title: 'ท่านกำลังจะลบข้อมูล',
-            content: 'ยืนยันการลบ!',
-            confirmButton: 'ใช่ ฉันจะลบมัน',
+            title: 'ท่านกำลังจะลงทะเบียนเข้าหอ',
+            content: 'ยืนยันการลงทะเบียนเข้าหอ!',
+            confirmButton: 'ใช่ ฉันยืนยัน',
             cancelButton: 'ไม่ใช่ ฉันกดผิด',
             confirmButtonClass: 'ui button green',
             cancelButtonClass: 'ui button red',

@@ -39,6 +39,22 @@ class TRoomopen_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function getDataAllRoomCheckIn() {
+        /*
+         * SELECT 
+          ro.*,pc.fname fname,pc.lname lname,r.room_no room_no,r.floor,r.price
+          FROM `t_room_open` ro
+          LEFT JOIN p_customer pc ON pc.code_id = ro.customer_id
+          LEFT JOIN m_room r ON r.code_id = ro.room_id
+         */
+        $query = $this->db->select('ro.*,pc.fname fname,pc.lname lname,pc.addr address,pc.id_card id_card,r.room_no room_no,r.floor,r.price ')
+                ->from('t_room_open ro')
+                ->join('p_customer pc', 'pc.code_id = ro.customer_id', 'left')
+                ->join('m_room r', 'r.code_id = ro.room_id', 'left')
+                ->get();
+        return $query->result_array();
+    }
+
     public function setData($data) {
         $this->code_id = $data['code_id'];
         $this->array_room_open = array(
@@ -74,6 +90,13 @@ class TRoomopen_model extends CI_Model {
     public function updateData() {
         $this->db->where('code_id', $this->code_id);
         return $this->db->update('t_room_open', $this->array_room_open);
+    }
+
+    public function updateStatus($status, $Id) {
+        $this->db->where('code_id', $Id);
+        return $this->db->update('t_room_open', array(
+                    'open_status' => $status
+        ));
     }
 
 }

@@ -24,7 +24,40 @@
     <?php } ?>
 </div>
 <div class="ui grid">
-    <div class="sixteen wide column">
-        <h4>จำนวนห้องพัก  20   ห้องว่าง  8  จอง  2  เข้าอยู่ 10  แจ้งออก 2</h4>
+    <div class="ui sixteen wide column segment">
+        <div class="ui statistics">
+            <div class="red statistic">
+                <div class="value">
+                    <i class="plane icon"></i> 20
+                </div>
+                <h1>
+                    จำนวนห้องพัก
+                </h1>
+            </div>
+            <div class="green statistic">
+                <div class="value">
+                    <i class="plane icon"></i>  8
+                </div>
+                <h1>
+                    ห้องว่าง
+                </h1>
+            </div>
+            <div class="blue statistic">
+                <div class="value">
+                    <i class="plane icon"></i>  22
+                </div>
+                <h1>
+                    เข้าอยู่
+                </h1>
+            </div>
+            <div class="pink statistic">
+                <div class="value">
+                    <i class="plane icon"></i>  22
+                </div>
+                <h1>
+                    แจ้งออก
+                </h1>
+            </div>
+        </div>
     </div>
 </div>

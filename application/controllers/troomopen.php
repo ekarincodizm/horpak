@@ -40,11 +40,14 @@ class TRoomopen extends CI_Controller {
     }
 
     public function checkout() {
-        $this->load->model('mroom_model');
-        $data['rooms'] = $this->mroom_model->getDataAll();
+        $this->load->model('troomopen_model');
+        $data['rooms'] = $this->troomopen_model->getDataAllRoomCheckIn();
 
         $this->load->model('pcustomer_model');
         $data['customers'] = $this->pcustomer_model->getDataAll();
+
+        $this->load->model('mfine_model');
+        $data['fines'] = $this->mfine_model->getDataAll();
 
         $this->load->view('/include/layout_header');
         $this->load->view('/room_checkout', $data);
@@ -71,6 +74,31 @@ class TRoomopen extends CI_Controller {
             }
             $this->functionhelper->jsonResponseFull($exec, 'เกิดข้อผิดพลาด', 'ไม่สามารถบันทึกข้อมูลได้', site_url('horpak/index'));
         }
+    }
+
+    public function saveCheckOut() {
+        $roomStatus = 2;
+        $exec = false;
+        $fines = json_decode($_POST['jsonFines'], true);
+        $horpakId = $_POST['horpakId'];
+        $openId = $_POST['openId'];
+        //var_dump($fines);
+        $this->load->model('tfine_model');
+
+        foreach ($fines as $index => $fine) {
+            $this->tfine_model->setData(array(
+                'code_id' => '',
+                'horpak_id' => $horpakId,
+                'open_id' => $openId,
+                'fine_id' => $fine['id'],
+                'price' => $fine['price']
+            ));
+            $exec = $this->tfine_model->insertData();
+        }
+        $this->load->model('troomopen_model');
+        $exec = $this->troomopen_model->updateStatus($roomStatus, $openId);
+
+        $this->functionhelper->jsonResponseFull($exec, 'เกิดข้อผิดพลาด', 'ไม่สามารลบข้อมูลได้', site_url('horpak/index'));
     }
 
     public function deleteTRoomopen($codeId) {

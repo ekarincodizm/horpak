@@ -25,7 +25,7 @@ if (!defined('BASEPATH'))
   | a PHP script and you can easily do that on your own.
   |
  */
-$config['base_url'] = 'http://localhost:81/horpak';
+$config['base_url'] = 'http://' . $_SERVER['HTTP_HOST'] . '/horpak';
 
 /*
   |--------------------------------------------------------------------------
@@ -236,7 +236,7 @@ $config['cache_path'] = '';
   |
  */
 //$config['encryption_key'] = '';
-$config['encryption_key'] = '02527-269-2503946-70386-34730519'; 
+$config['encryption_key'] = '02527-269-2503946-70386-34730519';
 
 /*
   |--------------------------------------------------------------------------

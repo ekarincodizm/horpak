@@ -6,9 +6,9 @@
             <thead>
                 <tr>
                     <th>เลือก</th>
-                    <th>ชื่อ สกุล</th>
-                    <th>ที่อยู่</th>
-                    <th>โทรศัพท์</th>
+                     <th>ชื่อ สกุล</th>
+                    <th>เลขห้อง</th>
+                    <th>ราคา</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,12 +19,19 @@
                                data-no="<?= $room['room_no'] ?>"
                                data-floor="<?= $room['floor'] ?>"
                                data-price="<?= $room['price'] ?>"
-                               <i class="plus square outline icon"></i>
+                               data-customerid="<?= $room['customer_id'] ?>"
+                               data-roomid="<?= $room['code_id'] ?>"
+                               data-horpakid="<?= $room['horpak_id'] ?>"
+                               data-name="<?= $room['fname'] . '   ' . $room['lname'] ?>"
+                               data-address="<?= $room['address'] ?>"
+                               data-idcard="<?= $room['id_card'] ?>"
+                               >
+                                <i class="plus square outline icon"></i>
                                 เลือก
                             </a>
                         </td>
-                        <td><?= $room['room_no'] ?></td>
-                        <td><?= $room['floor'] ?></td>
+                        <td><?= $room['fname'] . '   ' . $room['lname'] ?></td>
+                        <td><?= $room['room_no'] ?></td> 
                         <td><?= $room['price'] ?></td>
                     <?php } ?>
             </tbody>
@@ -40,6 +47,13 @@
             $('#lbNo').text('ชื่อห้อง : ' + $(this).attr('data-no'));
             $('#lbFloor').text('ชั้น : ' + $(this).attr('data-floor'));
             $('#lbPrice').text('ราคา : ' + $(this).attr('data-price'));
+            $('#lbName').text('ชื่อ : ' + $(this).attr('data-name'));
+            $('#lbIdCard').text('เลขบัตร : ' + $(this).attr('data-idcard'));
+            $('#lbAddress').text('ที่อยู่ : ' + $(this).attr('data-address'));
+            $('#inputHorpakId').val($(this).attr('data-horpakid'));
+            $('#inputOpenId').val($(this).attr('data-roomid'));
+            $('#inputCustomerId').val($(this).attr('data-customerid'));
+            $('.step0').attr('disabled', false);
             $('.ui.modal.room-search').modal('hide');
         });
     });

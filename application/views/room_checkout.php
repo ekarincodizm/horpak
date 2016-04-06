@@ -3,14 +3,8 @@
     <div class="ui ordered steps">
         <div class="active step">
             <div class="content">
-                <h3 class="">เลือกห้อง</h3>
-                <div class="description">เลือกห้องเพื่อเข้าอยู่</div>
-            </div>
-        </div>
-        <div class="step">
-            <div class="content">
-                <h3 class="">ข้อมูลผู้เช่า</h3>
-                <div class="description">กรอกข้อมูลผู้เข้าอยู่</div>
+                <h3 class="">ข้อมูลรายละเอียดการเช่า</h3>
+                <div class="description">ค้นหาข้อมูลการเช่า</div>
             </div>
         </div>
         <div class="step">
@@ -46,24 +40,12 @@
         <div class="column">
             <div class="ui stackable two column grid">
                 <input type="hidden" name="customer_id" id="inputCustomerId"/>
+                <input type="hidden" name="horpak_id" id="inputHorpakId"/>
+                <input type="hidden" name="open_id" id="inputOpenId"/>
                 <div class="column"><h3 id="lbNo">ห้อง</h3></div>
                 <div class="column"><h3 id="lbFloor">ชั้น</h3></div>
                 <div class="column"><h3 id="lbPrice">ราคา</h3></div>
             </div>
-        </div>
-        <div class="column">
-            <div class="ui center aligned segment">
-                <button type="button" class="ui button blue small next-step step1"  data-step="1" disabled><i class="arrow right icon"></i> ต่อไป</button>
-            </div>
-        </div>  
-    </div>
-
-    <!-- Group 2-->
-    <div class="ui stackable one column grid block" style="display: none">           
-        <div class="column">
-            <h2 class="ui header">
-                <button class="ui button small  teal customer-search"><i class="search icon"></i> ค้นหาลูกค้า</button>
-            </h2>                
         </div>
         <div class="column">
             <div class="ui stackable two column grid">
@@ -76,9 +58,14 @@
                 <div class="column"><h3 id="lbAddress">ที่อยู่</h3></div>
             </div>
         </div>
+        <div class="column">
+            <div class="ui center aligned segment">
+                <button type="button" class="ui button blue small next-step step0"  data-step="1" disabled><i class="arrow right icon"></i> ต่อไป</button>
+            </div>
+        </div>  
     </div>
 
-    <!-- Group 3-->
+    <!-- Group 2-->
     <div class="ui stackable one column grid block" style="display: none">            
         <div class="column">
             <h2 class="ui header">
@@ -95,46 +82,42 @@
                 <div class="column"><h3>ยอดค้างชำระ</h3></div>
             </div>
         </div>
+        <div class="column">
+            <div class="ui center aligned segment">
+                <button type="button" class="ui button blue small next-step step1"  data-step="2"><i class="arrow right icon"></i> ต่อไป</button>
+            </div>
+        </div> 
     </div>
 
-    <!-- Group 4-->
+    <!-- Group 3-->
     <div class="ui stackable one column grid block" style="display: none">            
         <div class="column">
-            <h2 class="ui header">
-                <div class="ui mini selection search dropdown">
-                    <input name="gender" type="hidden">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Gender</div>
-                    <div class="menu">
-                        <div class="item" data-value="1">Male</div>
-                        <div class="item" data-value="2">Female</div>
-                        <div class="item" data-value="3">Girl</div>
-                        <div class="item" data-value="4">Boy</div>
-                        <div class="item" data-value="5">Women</div>
-                    </div>
-                </div>
-                <button class="ui button  teal customer"><i class="plus icon"></i> เพิ่ม</button>
-            </h2>        
+            <p class="ui">
+                <label>เลือกรายการค่าเสียหาย</label>
+                <select class="ui dropdown search selection fine-choice">
+                    <?php foreach ($fines as $key => $fine) { ?>
+                        <option value="<?= $fine['code_id'] ?>-<?= $fine['std_price'] ?>"><?= $fine['fine_name'] ?></option>
+                    <?php } ?>
+                </select>
+                <button class="ui button  teal customer" id="btnAddFine"><i class="plus icon"></i> เพิ่ม</button>
+            </p>        
         </div>
         <div class="column">
-            <div class="ui divided selection list">
+            <div class="ui divided selection list fine-select">
                 <a class="item">
                     <div class="ui red horizontal label">1</div>
                     Kumquats
                 </a>
-                <a class="item">
-                    <div class="ui purple horizontal label">2</div>
-                    Ice Cream
-                </a>
-                <a class="item">
-                    <div class="ui purple horizontal label">3</div>
-                    Ice Cream
-                </a>
             </div>
         </div>
+        <div class="column">
+            <div class="ui center aligned segment">
+                <button type="button" class="ui button blue small next-step step2"  data-step="3"><i class="arrow right icon"></i> ต่อไป</button>
+            </div>
+        </div> 
     </div>
 
-    <!-- Group 5-->
+    <!-- Group 4-->
     <div class="ui stackable one column grid block" style="display: none">     
         <div class="column">
             <div class="ui checkbox">
@@ -144,8 +127,8 @@
         </div>
         <div class="column">
             <div class="ui center aligned segment">
-                <button class="ui button blue">บันทึก</button>
-                <button class="ui button orange">ยกเลิก</button>
+                <button type="button"  class="ui button orange small prev-step"  data-step="2"><i class="arrow left icon"></i> ย้อนหลับ</button>
+                <button type="button"  class="ui button green" id="btnSaveCheckOut">บันทึก</button>              
             </div>
         </div>
     </div>
@@ -153,12 +136,93 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
+        var fineSelect = $('.fine-select').empty();
         $('.ui.button.room-search').on('click', function () {
             $('.ui.modal.room-search').modal('show');
         });
         $('.ui.button.customer-search').on('click', function () {
             $('.ui.modal.customer-search').modal('show');
         });
-        $('.ui.selection.dropdown').dropdown();
+        var dropdownFine = $('.ui.selection.dropdown.fine-choice').dropdown({
+            'onChange': function (value, text, $choice) {
+                //$(fineSelect).append(htmlItemSelect({value: value, text: text, choice: $choice}));
+            }
+        });
+        $('#btnAddFine').on('click', function () {
+            var data = {};
+            data.index = ($(fineSelect).children().length + 1);
+            data.text = $(dropdownFine).dropdown('get text');
+            var itemIdPrice = $(dropdownFine).dropdown('get value');
+            data.value = itemIdPrice.split("-")[0];
+            data.price = itemIdPrice.split("-")[1];
+            $(fineSelect).append(htmlItemSelect(data));
+        });
+        $('#btnSaveCheckOut').on('click', function () {
+            var dataFineSelect = [];
+            var selectFine = $(fineSelect).children('a');
+            $.each(selectFine, function (index, fine) {
+                console.log(fine);
+                var id = $(fine).attr('data-id');
+                var text = $(fine).text();
+                var price = $(fine).find('input[type="number"]').val();  //<input type="number" onchange="isInteger(this)" value="111">
+                var data = {id: id, text: text, price: price};
+                dataFineSelect.push(data);
+            });
+            var customerId = $('#inputCustomerId').val();
+            var openId = $('#inputOpenId').val();
+            var horpakId = $('#inputHorpakId').val();
+            console.log(dataFineSelect);
+            $.confirm({
+                icon: 'fa fa-warning',
+                title: 'ท่านกำลังจะลงทะเบียนออก',
+                content: 'ยืนยันการลงทะเบียนออกจากหอ!',
+                confirmButton: 'ใช่ ฉันยืนยัน',
+                cancelButton: 'ไม่ใช่ ฉันกดผิด',
+                confirmButtonClass: 'ui button green',
+                cancelButtonClass: 'ui button red',
+                columnClass: 'ui grid center aligned',
+                closeIcon: true,
+                closeIconClass: 'fa fa-close', // or 'glyphicon glyphicon-remove'
+                confirm: function () {
+                    $.ajax({
+                        url: '<?= site_url('troomopen/savecheckout') ?>',
+                        data: {
+                            jsonFines: JSON.stringify(dataFineSelect),
+                            horpakId : horpakId,
+                            openId : openId,
+                            customerId : customerId
+                        },
+                        dataType: 'json',
+                        type: 'post',
+                        success: function (resp) {
+                            if (resp.status) {
+                                formMessageInfo(resp);
+                            } else {
+                                toastMessageError(resp);
+                            }
+                        },
+                        error: function (err, xhrr, http) {
+                            console.log(err);
+                            toastMessageError({title: 'StatusCode : ' + err.status + ' ' + err.statusText, message: err.responseText});
+                        }
+                    });
+                },
+            });
+        });
     });
+
+    function htmlItemSelect(data) {
+        var item = '<a class="item" data-id="' + data.value + '">';
+        item += '<div class="ui red horizontal label">' + data.index + '</div>';
+        item += data.text + '   <input type="number"  value="' + data.price + '" onchange="isInteger(this)"/>';
+        item += '</a>';
+        return item;
+    }
+    function isInteger(element) {
+        var isNumber = $.isNumeric(element.value);
+        if (!isNumber) {
+            alert('กรุณากรอกตัวเลขเท่านั้น');
+            $(element).val('').focus();
+        }
+    }
 </script>
