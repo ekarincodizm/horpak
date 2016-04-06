@@ -1,4 +1,15 @@
 <div class="ui grid">
+    <div class="column">
+        <div class="ui large breadcrumb">
+            <a class="section" href="<?= site_url('horpak/index') ?>">หน้าแรก</a>
+            <i class="right angle icon divider"></i>
+            <a class="section" href="<?= site_url('horpak/subMenu') ?>">หน้าข้อมูลหลัก</a>
+            <i class="right angle icon divider"></i>
+            <div class="active section">หน้าข้อมูลประเภทห้อง</div>
+        </div>
+    </div>    
+</div>
+<div class="ui grid">
     <div class="eight wide column">
         <h3>รายการประเภทห้องพัก</h3>
     </div>

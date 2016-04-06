@@ -1,4 +1,11 @@
-<div class="ui grid stackable four column container">
+<div class="ui grid">
+    <div class="column">
+        <div class="ui large breadcrumb">
+            <div class="active section">หน้าแรก</div>
+        </div>
+    </div>    
+</div>
+<div class="ui grid stackable four column">
     <?php foreach ($features as $key => $feature) { ?>
         <div class="column">
             <div class="ui cards">

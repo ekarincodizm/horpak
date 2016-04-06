@@ -1,5 +1,11 @@
-<div class="ui left aligned segment">
-    <h2><i class="arrow right icon"></i> แจ้งเข้า</h2>
+<div class="ui grid">
+    <div class="column">
+        <div class="ui large breadcrumb">
+            <a class="section" href="<?= site_url('horpak/index') ?>">หน้าหลัก</a>
+            <i class="right angle icon divider"></i>
+            <div class="active section">ข้อมูลแจ้งเข้า</div>
+        </div>
+    </div>    
 </div>
 <div class="ui center aligned segment">
     <!-- Step Begin-->

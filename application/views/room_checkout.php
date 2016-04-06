@@ -1,3 +1,12 @@
+<div class="ui grid">
+    <div class="column">
+        <div class="ui large breadcrumb">
+            <a class="section" href="<?= site_url('horpak/index') ?>">หน้าหลัก</a>
+            <i class="right angle icon divider"></i>
+            <div class="active section">ข้อมูลแจ้งออก</div>
+        </div>
+    </div>    
+</div>
 <div class="ui center aligned segment">
     <!-- Step Begin-->
     <div class="ui ordered steps">
@@ -5,12 +14,6 @@
             <div class="content">
                 <h3 class="">ข้อมูลรายละเอียดการเช่า</h3>
                 <div class="description">ค้นหาข้อมูลการเช่า</div>
-            </div>
-        </div>
-        <div class="step">
-            <div class="content">
-                <h3 class="">ข้อมูลการเช่า</h3>
-                <div class="description">กรอกข้อมูลผู้ย้ายออก</div>
             </div>
         </div>
         <div class="step">
@@ -47,6 +50,7 @@
                 <div class="column"><h3 id="lbPrice">ราคา</h3></div>
             </div>
         </div>
+        <div class="ui divider"></div>
         <div class="column">
             <div class="ui stackable two column grid">
                 <div class="column"><h3 id="lbName">นาย</h3></div>
@@ -58,6 +62,17 @@
                 <div class="column"><h3 id="lbAddress">ที่อยู่</h3></div>
             </div>
         </div>
+        <div class="ui divider"></div>
+        <div class="column">
+            <div class="ui stackable two column grid">
+                <div class="column"><h3 id="lbBeginDate">เริ่มวันที่</h3></div>
+                <div class="column"><h3 id="lbRoomType">ประเภท</h3></div>
+                <div class="column"><h3 id="lbDeposit">ค่ามัดจำ</h3></div>
+                <div class="column"><h3 id="lbRentalUnit">ค่าเช่าต่อหน่วย</h3></div>
+                <div class="column"><h3 id="lbService">บริการเสริม</h3></div><div class="column"></div>
+                <div class="column"><h3 id="lb">ยอดค้างชำระ</h3></div>
+            </div>
+        </div>
         <div class="column">
             <div class="ui center aligned segment">
                 <button type="button" class="ui button blue small next-step step0"  data-step="1" disabled><i class="arrow right icon"></i> ต่อไป</button>
@@ -66,30 +81,6 @@
     </div>
 
     <!-- Group 2-->
-    <div class="ui stackable one column grid block" style="display: none">            
-        <div class="column">
-            <h2 class="ui header">
-
-            </h2>                
-        </div>
-        <div class="column">
-            <div class="ui stackable two column grid">
-                <div class="column"><h3>เริ่มวันที่</h3></div>
-                <div class="column"><h3>ประเภท</h3></div>
-                <div class="column"><h3>ค่ามัดจำ</h3></div>
-                <div class="column"><h3>ค่าเช่าต่อหน่วย</h3></div>
-                <div class="column"><h3>บริการเสริม</h3></div><div class="column"></div>
-                <div class="column"><h3>ยอดค้างชำระ</h3></div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="ui center aligned segment">
-                <button type="button" class="ui button blue small next-step step1"  data-step="2"><i class="arrow right icon"></i> ต่อไป</button>
-            </div>
-        </div> 
-    </div>
-
-    <!-- Group 3-->
     <div class="ui stackable one column grid block" style="display: none">            
         <div class="column">
             <p class="ui">
@@ -112,12 +103,13 @@
         </div>
         <div class="column">
             <div class="ui center aligned segment">
-                <button type="button" class="ui button blue small next-step step2"  data-step="3"><i class="arrow right icon"></i> ต่อไป</button>
+                <button type="button"  class="ui button orange small prev-step"  data-step="0"><i class="arrow left icon"></i> ย้อนหลับ</button>
+                <button type="button" class="ui button blue small next-step step2"  data-step="2"><i class="arrow right icon"></i> ต่อไป</button>
             </div>
         </div> 
     </div>
 
-    <!-- Group 4-->
+    <!-- Group 3-->
     <div class="ui stackable one column grid block" style="display: none">     
         <div class="column">
             <div class="ui checkbox">
@@ -127,7 +119,7 @@
         </div>
         <div class="column">
             <div class="ui center aligned segment">
-                <button type="button"  class="ui button orange small prev-step"  data-step="2"><i class="arrow left icon"></i> ย้อนหลับ</button>
+                <button type="button"  class="ui button orange small prev-step"  data-step="1"><i class="arrow left icon"></i> ย้อนหลับ</button>
                 <button type="button"  class="ui button green" id="btnSaveCheckOut">บันทึก</button>              
             </div>
         </div>

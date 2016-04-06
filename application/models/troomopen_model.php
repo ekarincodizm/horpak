@@ -95,6 +95,7 @@ class TRoomopen_model extends CI_Model {
     public function updateStatus($status, $Id) {
         $this->db->where('code_id', $Id);
         return $this->db->update('t_room_open', array(
+                    'end_date' => date('Y-m-d'),
                     'open_status' => $status
         ));
     }

@@ -1,4 +1,13 @@
-<div class="ui grid stackable four column container">
+<div class="ui grid">
+    <div class="column">
+        <div class="ui large breadcrumb">
+            <a class="section" href="<?= site_url('horpak/index') ?>">หน้าแรก</a>
+            <i class="right angle icon divider"></i>
+            <div class="active section">หน้าข้อมูลหลัก</div>
+        </div>
+    </div>    
+</div>
+<div class="ui grid stackable four column">
     <?php foreach ($features as $key => $feature) { ?>
         <div class="column">
             <div class="ui cards">

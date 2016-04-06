@@ -25,6 +25,11 @@
                                data-name="<?= $room['fname'] . '   ' . $room['lname'] ?>"
                                data-address="<?= $room['address'] ?>"
                                data-idcard="<?= $room['id_card'] ?>"
+                               
+                               data-offdate="<?= $room['eff_date'] ?>"
+                               data-advmny="<?= $room['adv_mny'] ?>"
+                               data-insmny="<?= $room['ins_mny'] ?>"
+                               data-renttypeid="<?= $room['rent_type_id'] ?>"
                                >
                                 <i class="plus square outline icon"></i>
                                 เลือก
@@ -50,9 +55,16 @@
             $('#lbName').text('ชื่อ : ' + $(this).attr('data-name'));
             $('#lbIdCard').text('เลขบัตร : ' + $(this).attr('data-idcard'));
             $('#lbAddress').text('ที่อยู่ : ' + $(this).attr('data-address'));
+            
             $('#inputHorpakId').val($(this).attr('data-horpakid'));
             $('#inputOpenId').val($(this).attr('data-roomid'));
             $('#inputCustomerId').val($(this).attr('data-customerid'));
+            
+            $('#lbBeginDate').text('เริ่มวันที่ : '+$(this).attr('data-offdate'));
+            $('#lbDeposit').text('ค่ามัดจำ : '+$(this).attr('data-advmny'));
+            $('#lbRentalUnit').text('ค่าเช่าต่อหน่วย : '+$(this).attr('data-insmny'));
+            $('#lbRoomType').text('ประเภท : '+$(this).attr('data-renttypeid'));
+            
             $('.step0').attr('disabled', false);
             $('.ui.modal.room-search').modal('hide');
         });
